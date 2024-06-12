@@ -10,25 +10,24 @@ body {
 }
 
 header {
-    background-color: rgb(40, 39, 39);
+    background-color: #000;
     color: #fff;
     text-align: center;
-    position: relative;
-    z-index: 1;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
+    padding: 20px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 
 header .logo-container {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 header .logo-container img {
-    height: 50px;
+    height: 40px;
     margin-right: 10px;
 }
 
@@ -47,22 +46,23 @@ nav ul li {
 nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .content {
-    padding: 0;
+    padding-top: 100px; /* Offset for the fixed header */
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    text-align: center;
 }
 
 footer {
     text-align: center;
     padding: 1rem 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #000;
     color: #fff;
     width: 100%;
     position: relative;
@@ -70,25 +70,32 @@ footer {
     margin-top: auto;
 }
 
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 .playlist-section {
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: 70vh; /* Reduced height */
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
     flex-direction: column;
+    padding: 20px; /* Add padding for spacing */
 }
 
 .playlist-content {
     background-color: rgba(0, 0, 0, 0);
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 800px;
-    width: 90%;
-    text-align: center;
+    padding: 20px; /* Adjust padding */
+    border-radius: 4px;
+    max-width: 600px; /* Adjust width */
+    width: 100%;
+    text-align: left;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,47 +103,74 @@ footer {
 
 .album-info {
     display: flex;
-    flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    width: 100%;
 }
 
-.album-cover {
+.album-cover-large {
     width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.track-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.track-title-large {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.track-artist-large {
+    font-size: 1rem;
+    color: #fffcfc;
+    margin: 10px 0;
 }
 
 .audio-player {
     width: 100%;
-    margin-bottom: 20px;
-    background-color: rgba(0, 0, 0, 0);
+    margin-top: 10px;
 }
 
 .audio-player audio {
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
 .track-list {
     width: 100%;
-    max-width: 600px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 300px; /* Set max height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .track {
     display: flex;
     align-items: center;
-    padding: 5px 0;
-    border-bottom: 1px solid #44444400;
+    padding: 3px 0; /* Reduced padding */
+    border-bottom: 1px solid #444444;
     cursor: pointer;
-    font-size: 0.85rem;
-    line-height: 1.2; /* Reduce line height */
+    font-size: 0.8rem; /* Adjusted font size */
+    line-height: 1.2; /* Adjusted line height */
+    width: 100%;
+    transition: background-color 0.3s; /* Add transition for hover effect */
 }
 
 .track img {
-    width: 70px;
-    height: 70px;
+    width: 55px; /* Adjusted size */
+    height: 55px;
     object-fit: cover;
     border-radius: 4px;
     margin-right: 10px;
@@ -151,20 +185,22 @@ footer {
 
 .track-title {
     font-weight: bold;
-    font-size: 1rem;
-    line-height: 1.2; /* Reduce line height */
+    font-size: 1rem; /* Adjusted font size */
+    line-height: 1.1; /* Adjusted line height */
 }
 
 .track-artist {
-    font-size: .9rem;
-    color: #fffbfb;
-    line-height: 1.2; /* Reduce line height */
+    font-size: 0.9rem; /* Adjusted font size */
+    color: #ffffff;
+    line-height: 1.1; /* Adjusted line height */
 }
 
 .track-duration {
     text-align: right;
-    font-size: 0.75rem;
-    line-height: 1.2; /* Reduce line height */
+    padding-right: 20px;
+    font-size: 0.8rem; /* Adjusted font size */
+    line-height: 1.2; /* Adjusted line height */
+    min-width: 50px; /* Ensure duration is not overlapped */
 }
 
 .track:hover {
@@ -178,5 +214,13 @@ footer {
 h3, h2 {
     color: #fff;
     margin: 10px 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 0; /* Adjust margin-top to fit better within the section */
 }
