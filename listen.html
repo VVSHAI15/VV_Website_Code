@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listen - AviShai Dayanim</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Logo">
+            <h1>AviShai Dayanim - Film Composer</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="bio.html">Bio</a></li>
+                <li><a href="awards.html">Awards/Credits</a></li>
+                <li><a href="listen.html">Listen</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <h2>Listen to My Compositions</h2>
+
+        <!-- One More Time Section -->
+        <div class="playlist-section" id="one-more-time" style="background-image: url('/Images/OneMore_bck_blur.jpg');">
+            <div class="playlist-content">
+                <div class="album-info">
+                    <img src="images/OneMoreTime_album.jpg" alt="Album Cover" class="album-cover">
+                    <h3>One More Time</h3>
+                    <p>AviShai Dayanim</p>
+                </div>
+                <div class="audio-player">
+                    <audio id="main-audio" controls>
+                        <source id="audio-source" src="/Audio/OneMoreTime_TheCave.wav" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="track-list">
+                        <div class="track" data-src="/Audio/OneMoreTime_TheCave.wav">
+                            <p>The Cave</p>
+                            <p>0:30</p> 
+                        </div>
+                        <div class="track" data-src="/Audio/OneMoreTime_AnHonestConversation.wav">
+                            <p>An Honest Conversation</p>
+                            <p>0:41</p>
+                        </div>
+                        <div class="track" data-src="/Audio/OneMoreTime_SearchingForHer.wav">
+                            <p>Searching For Her</p>
+                            <p>0:51</p>
+                        </div>
+                        <div class="track" data-src="/Audio/OneMoreTime_OneMoreTime.wav">
+                            <p>One More Time</p>
+                            <p>0:30</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AviShai Dayanim. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
