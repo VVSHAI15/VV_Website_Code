@@ -24,24 +24,25 @@
     </header>
 
     <section class="content">
-        <h2>Listen to My Compositions</h2>
+        <h2 class="section-title">ONE MORE TIME</h2>
 
-        <!-- One More Time Section -->
         <div class="playlist-section" id="one-more-time" style="background-image: url('/Images/OneMore_bck_blur.jpg');">
             <div class="playlist-content">
                 <div class="album-info">
-                    <img src="images/OneMoreTime_album.jpg" alt="Album Cover" class="album-cover">
-                    <h3>One More Time</h3>
-                    <p>AviShai Dayanim</p>
-                </div>
-                <div class="audio-player">
-                    <audio id="main-audio" controls>
-                        <source id="audio-source" src="/Audio/OneMoreTime_TheCave.wav" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
+                    <img src="images/OneMoreTime_album.jpg" alt="Album Cover" class="album-cover-large" id="current-album-cover">
+                    <div class="track-details">
+                        <h3 class="track-title-large" id="current-track-title">The Cave</h3>
+                        <p class="track-artist-large" id="current-track-artist">AviShai Dayanim</p>
+                        <div class="audio-player">
+                            <audio id="main-audio" controls>
+                                <source id="audio-source" src="/Audio/OneMoreTime_TheCave.wav" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
                 </div>
                 <div class="track-list">
-                    <div class="track" data-src="/Audio/OneMoreTime_TheCave.wav">
+                    <div class="track active" data-src="/Audio/OneMoreTime_TheCave.wav" data-title="The Cave" data-artist="AviShai Dayanim" data-cover="images/OneMoreTime_album.jpg">
                         <img src="images/OneMoreTime_album.jpg" alt="Album Cover">
                         <div class="track-info">
                             <p class="track-title">The Cave</p>
@@ -49,7 +50,7 @@
                         </div>
                         <p class="track-duration">0:30</p>
                     </div>
-                    <div class="track" data-src="/Audio/OneMoreTime_AnHonestConversation.wav">
+                    <div class="track" data-src="/Audio/OneMoreTime_AnHonestConversation.wav" data-title="An Honest Conversation" data-artist="AviShai Dayanim" data-cover="images/OneMoreTime_album.jpg">
                         <img src="images/OneMoreTime_album.jpg" alt="Album Cover">
                         <div class="track-info">
                             <p class="track-title">An Honest Conversation</p>
@@ -57,7 +58,7 @@
                         </div>
                         <p class="track-duration">0:41</p>
                     </div>
-                    <div class="track" data-src="/Audio/OneMoreTime_SearchingForHer.wav">
+                    <div class="track" data-src="/Audio/OneMoreTime_SearchingForHer.wav" data-title="Searching For Her" data-artist="AviShai Dayanim" data-cover="images/OneMoreTime_album.jpg">
                         <img src="images/OneMoreTime_album.jpg" alt="Album Cover">
                         <div class="track-info">
                             <p class="track-title">Searching For Her</p>
@@ -65,7 +66,7 @@
                         </div>
                         <p class="track-duration">0:51</p>
                     </div>
-                    <div class="track" data-src="/Audio/OneMoreTime_OneMoreTime.wav">
+                    <div class="track" data-src="/Audio/OneMoreTime_OneMoreTime.wav" data-title="One More Time" data-artist="AviShai Dayanim" data-cover="images/OneMoreTime_album.jpg">
                         <img src="images/OneMoreTime_album.jpg" alt="Album Cover">
                         <div class="track-info">
                             <p class="track-title">One More Time</p>
