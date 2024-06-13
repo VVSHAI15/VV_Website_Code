@@ -10,7 +10,7 @@ html, body {
 }
 
 header {
-    background-color: #171617;
+    background-color: #000000;
     color: #fff;
     text-align: center;
     padding: 5px 0;
@@ -43,7 +43,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #d0d0d0;
+    color: #ffffff;
     text-decoration: none;
     font-size: 1.2rem;
     padding-bottom: 5px; /* Add padding for the underline */
