@@ -15,9 +15,6 @@ header {
     text-align: center;
     padding: 20px 0;
     width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
 }
 
 header .logo-container {
@@ -50,7 +47,6 @@ nav ul li a {
 }
 
 .content {
-    padding-top: 100px; /* Offset for the fixed header */
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -60,6 +56,7 @@ nav ul li a {
     width: 100%; /* Ensure full width */
     background-color: #121212; /* Ensure background color is consistent */
     margin: 0; /* Ensure no extra margins */
+    padding: 0; /* Ensure no extra padding */
 }
 
 footer {
@@ -76,7 +73,7 @@ footer {
 .playlist-section {
     background-size: cover;
     background-position: center;
-    min-height: 100vh; /* Ensure it covers the full height of the viewport */
+    min-height: 80vh; /* Ensure it covers the full height of the viewport */
     width: 100%;
     display: flex;
     flex-direction: column; /* Make flex direction column to accommodate title */
@@ -101,7 +98,7 @@ footer {
 }
 
 .playlist-content {
-    background-color: rgba(0, 0, 0, 0.5); /* Ensure it is above the background */
+    background-color: rgba(0, 0, 0, 0); /* Ensure it is above the background */
     padding: 20px; /* Adjust padding */
     border-radius: 4px;
     max-width: 600px; /* Adjust width */
@@ -165,7 +162,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    max-height: 400px; /* Set max height for scrolling */
+    max-height: 250px; /* Set max height for scrolling */
     overflow-y: auto; /* Enable vertical scrolling */
 }
 

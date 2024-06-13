@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const allSections = document.querySelectorAll('.content');
+    let currentAudioPlayer = null;
 
     allSections.forEach(section => {
         const tracks = section.querySelectorAll('.track');
@@ -18,8 +19,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
             audioSource.src = src;
             audioPlayer.load();
-            // Removed the auto-play line
-            // audioPlayer.play();
+
+            // Pause current audio player if there's any
+            if (currentAudioPlayer && currentAudioPlayer !== audioPlayer) {
+                currentAudioPlayer.pause();
+            }
+
+            // Set current audio player and play the track
+            currentAudioPlayer = audioPlayer;
+            audioPlayer.play();
 
             currentTrackTitle.textContent = title;
             currentTrackArtist.textContent = artist;
@@ -29,10 +37,11 @@ document.addEventListener('DOMContentLoaded', function() {
             track.classList.add('active');
         };
 
-        // Initial track setup
+        // Initial track setup (but do not play)
         const initialTrack = section.querySelector('.track.active');
         if (initialTrack) {
             updateTrackDetails(initialTrack);
+            audioPlayer.pause(); // Ensure it does not play on load
         }
 
         tracks.forEach(track => {
