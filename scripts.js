@@ -1,45 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const tracks = document.querySelectorAll('.track');
-    const audioPlayer = document.getElementById('main-audio');
-    const audioSource = document.getElementById('audio-source');
-    const currentTrackTitle = document.getElementById('current-track-title');
-    const currentTrackArtist = document.getElementById('current-track-artist');
-    const currentAlbumCover = document.getElementById('current-album-cover');
+    const allSections = document.querySelectorAll('.content');
 
-    const updateTrackDetails = (track) => {
-        const src = track.getAttribute('data-src');
-        const title = track.getAttribute('data-title');
-        const artist = track.getAttribute('data-artist');
-        const cover = track.getAttribute('data-cover');
+    allSections.forEach(section => {
+        const tracks = section.querySelectorAll('.track');
+        const audioPlayer = section.querySelector('audio');
+        const audioSource = section.querySelector('audio source');
+        const currentTrackTitle = section.querySelector('.track-title-large');
+        const currentTrackArtist = section.querySelector('.track-artist-large');
+        const currentAlbumCover = section.querySelector('.album-cover-large');
 
-        audioSource.src = src;
-        audioPlayer.load();
-        audioPlayer.play();
+        // Function to update the currently playing track details
+        const updateTrackDetails = (track) => {
+            const src = track.getAttribute('data-src');
+            const title = track.getAttribute('data-title');
+            const artist = track.getAttribute('data-artist');
+            const cover = track.getAttribute('data-cover');
 
-        currentTrackTitle.textContent = title;
-        currentTrackArtist.textContent = artist;
-        currentAlbumCover.src = cover;
+            audioSource.src = src;
+            audioPlayer.load();
+            // Removed the auto-play line
+            // audioPlayer.play();
 
-        tracks.forEach(t => t.classList.remove('active'));
-        track.classList.add('active');
-    };
+            currentTrackTitle.textContent = title;
+            currentTrackArtist.textContent = artist;
+            currentAlbumCover.src = cover;
 
-    const initialTrack = document.querySelector('.track.active');
-    if (initialTrack) {
-        updateTrackDetails(initialTrack);
-    }
+            tracks.forEach(t => t.classList.remove('active'));
+            track.classList.add('active');
+        };
 
-    tracks.forEach(track => {
-        track.addEventListener('click', function() {
-            updateTrackDetails(this);
-        });
+        // Initial track setup
+        const initialTrack = section.querySelector('.track.active');
+        if (initialTrack) {
+            updateTrackDetails(initialTrack);
+        }
 
-        track.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter' || event.key === ' ') {
+        tracks.forEach(track => {
+            track.addEventListener('click', function() {
                 updateTrackDetails(this);
-            }
+            });
         });
     });
-
-    tracks.forEach(track => track.setAttribute('tabindex', '0'));
 });
