@@ -73,33 +73,35 @@ footer {
     margin-top: auto;
 }
 
-.section-title {
-    font-size: 3rem; /* Adjusted font size */
-    font-weight: bold;
-    margin-bottom: 0px;
-    text-align: center;
-    margin-top: 0; /* Adjust margin-top to fit better within the section */
-    padding-top: 80px; /* Increase padding to ensure title is not covered */
-}
-
 .playlist-section {
     background-size: cover;
     background-position: center;
     min-height: 100vh; /* Ensure it covers the full height of the viewport */
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Make flex direction column to accommodate title */
     align-items: center;
+    justify-content: center; /* Center content vertically */
     color: #fff;
-    flex-direction: column;
-    padding: 20px; /* Add padding for spacing */
+    padding: 0; /* Remove padding to prevent separation */
     margin: 0; /* Ensure no extra margins */
-    flex: 1; /* Allow section to grow */
-    padding-top: 100px; /* Offset for the fixed header */
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 3rem; /* Adjusted font size */
+    font-weight: bold;
+    margin: 0; /* Remove default margins */
+    padding: 20px 0; /* Add padding for spacing */
+    z-index: 1; /* Ensure it is above other content */
+    position: relative; /* Ensure it is positioned relative to the section */
+    top: 0; /* Ensure it starts at the top of the section */
 }
 
 .playlist-content {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5); /* Ensure it is above the background */
     padding: 20px; /* Adjust padding */
     border-radius: 4px;
     max-width: 600px; /* Adjust width */
@@ -108,6 +110,8 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 1; /* Ensure it is above the background */
+    margin-top: 20px; /* Space between title and content */
 }
 
 .album-info {
