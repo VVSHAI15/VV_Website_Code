@@ -124,7 +124,7 @@ footer {
 }
 
 .playlist-content {
-    background-color: rgba(0, 0, 0, 0); /* Ensure it is above the background */
+    background-color: rgba(48, 48, 48, 0.101); /* Ensure it is above the background */
     padding: 20px; /* Adjust padding */
     border-radius: 4px;
     max-width: 600px; /* Adjust width */
@@ -178,7 +178,7 @@ footer {
 
 .audio-player audio {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0);
     border-radius: 5px;
 }
 
@@ -196,7 +196,7 @@ footer {
     display: flex;
     align-items: center;
     padding: 3px 0; /* Reduced padding */
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid #44444400;
     cursor: pointer;
     font-size: 0.8rem; /* Adjusted font size */
     line-height: 1.2; /* Adjusted line height */
