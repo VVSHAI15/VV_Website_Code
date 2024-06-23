@@ -113,6 +113,17 @@ footer {
     text-align: center;
 }
 
+.playlist-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 0;
+}
+
 .section-title {
     font-size: 3rem; /* Adjusted font size */
     font-weight: bold;
@@ -124,7 +135,7 @@ footer {
 }
 
 .playlist-content {
-    background-color: rgba(48, 48, 48, 0.101); /* Ensure it is above the background */
+    background-color: rgba(48, 48, 48, 0); /* Ensure it is above the background */
     padding: 20px; /* Adjust padding */
     border-radius: 4px;
     max-width: 600px; /* Adjust width */
