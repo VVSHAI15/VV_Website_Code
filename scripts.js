@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const initializeWaveSurfer = (container) => {
         return WaveSurfer.create({
             container: container,
-            waveColor: 'rgb(84, 84, 84)', // Purple color
-            progressColor: 'rgb(184, 184, 184)', // Darker purple color
+            waveColor: 'rgb(100, 100, 100)', // Grey
+            progressColor: 'rgb(184, 184, 184)', //White
             barWidth: 2,
             barGap: 3,
             barRadius: 2,
