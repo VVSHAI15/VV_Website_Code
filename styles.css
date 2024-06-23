@@ -1,5 +1,13 @@
+@font-face {
+    font-family: 'Bodoni 72 Smallcaps';
+    src: url('path/to/Bodoni72Smallcaps.woff2') format('woff2'),
+         url('path/to/Bodoni72Smallcaps.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html, body {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Bodoni 72 Smallcaps', serif;
     margin: 0;
     padding: 0;
     color: #fff;
@@ -10,23 +18,28 @@ html, body {
 }
 
 header {
-    background-color: #000000;
+    background-color: #121212;
     color: #fff;
     text-align: center;
     padding: 5px 0;
     width: 100%;
-    height: 250px;
+    height: 400px;
 }
 
 header .logo-container {
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: center; /* Center the logo */
+    flex-direction: column; /* Arrange logo and nav vertically */
 }
 
 header .logo-container img {
-    height: 150px;
-    margin-right: 10px;
+    height: 300px; /* Increase logo height */
+    margin-bottom: 20px; /* Add space between logo and nav */
+}
+
+nav {
+    margin-top: 20px; /* Add space above the navigation */
 }
 
 nav ul {
@@ -38,14 +51,14 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 5rem;
+    margin: 0 3rem; /* Reduce the spacing between nav items */
     position: relative; /* Add relative positioning for the underline effect */
 }
 
 nav ul li a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1rem; /* Increase font size */
     padding-bottom: 5px; /* Add padding for the underline */
     transition: color 0.3s; /* Smooth color transition */
 }
@@ -71,6 +84,7 @@ nav ul li a.active::after {
 nav ul li a.active {
     color: #b4b4b4; /* Optionally change color for active link */
 }
+
 
 .content {
     flex: 1;
