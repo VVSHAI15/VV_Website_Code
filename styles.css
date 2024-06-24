@@ -85,6 +85,52 @@ nav ul li a.active {
     color: #b4b4b4; /* Optionally change color for active link */
 }
 
+/* New CSS for the bio section */
+.bio-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 20px;
+    background-color: #121212; /* Match the background color */
+}
+
+.bio-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.bio-image {
+    flex: 1;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.bio-image img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+}
+
+.bio-text {
+    flex: 2;
+    text-align: left;
+}
+
+.bio-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.bio-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
 
 .content {
     flex: 1;
