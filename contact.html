@@ -28,17 +28,16 @@
 
     <section class="contact-section">
         <h2>Let's Tell A Story, Together...</h2>
-        <form class="contact-form">
+        <form action ="https://api.web3forms.com/submit"method="POST" class="contact-form">
+            <input type="hidden" name="access_key" value="949dea64-3b9a-4bc0-8b66-20b0d5e9dbd3">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
-            <a href="mailto:dayanim.music@gmail.com">
-                <button type="submit">Send</button>
-              </a>
-            
+            <button type="submit">Send</button>
+            <input type="hidden" name="redirect" value="https://vvshai15.github.io/VV_Website_Code/contact.html">
         </form>
     </section>
 
