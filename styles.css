@@ -6,12 +6,12 @@ html, body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #1f1f1f;
+    background-color: #1e1e1e;
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 header {
-    background-color: #1f1f1f;
+    background-color: #1e1e1e;
     color: #fff;
     text-align: center;
     padding: 5px 0;
@@ -73,10 +73,12 @@ nav ul li a::after {
 nav ul li a:hover::after,
 nav ul li a.active::after {
     width: 100%;
+    text-shadow: 2px 2px 8px rgba(221, 219, 219, 0.688); /* Add drop shadow to text */
 }
 
 nav ul li a.active {
     color: #b4b4b4;
+    text-shadow: 2px 2px 8px rgba(221, 219, 219, 0.688); /* Add drop shadow to text */
 }
 
 .video-section {
@@ -110,7 +112,7 @@ nav ul li a.active {
     color: #fff;
     text-align: center;
     z-index: 2;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Add drop shadow to text */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.894); /* Add drop shadow to text */
 }
 
 .video-overlay h1 {
@@ -150,10 +152,11 @@ nav ul li a.active {
     font-weight: normal;
     opacity: 1;
     font-size: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(167, 165, 165, 0.27); /* Add drop shadow to text */
 }
 
 .fade-in-text-container {
-    max-width: 1500px; /* Adjust the width as needed */
+    max-width: 1300px; /* Adjust the width as needed */
     margin: 0 auto; /* Center the text container */
     padding: 20px; /* Optional padding for better appearance */
 }
@@ -161,13 +164,76 @@ nav ul li a.active {
 footer {
     text-align: center;
     padding: 1rem 0;
-    background-color: #1f1f1f;
+    background-color: #1e1e1e;
     color: #fff;
     width: 100%;
     position: relative;
     z-index: 2;
     margin-top: auto;
 }
+
+.bio-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    background-color: #1e1e1e;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.bio-content {
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: hidden; /* Ensure the container clears floated elements */
+}
+
+.bio-image {
+    float: right; /* Float the image to the right */
+    margin-left: 20px; /* Space between the image and text */
+    margin-bottom: 20px; /* Margin at the bottom for wrapping text */
+    margin-top: 20px; /* Align with header */
+}
+
+.bio-image img {
+    width: 100%;
+    max-width: 350px; /* Adjust max-width as needed */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Added drop shadow */
+}
+
+.bio-text {
+    text-align: justify; /* Ensure text extends fully */
+}
+
+.bio-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #b4b4b4;
+}
+
+.bio-text p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #e0e0e0;
+    text-align: justify; /* Ensure text extends fully */
+}
+
+
+@media screen and (max-width: 768px) {
+    .bio-image {
+        float: none; /* Remove float on smaller screens */
+        margin: 0 auto 20px auto; /* Center image on smaller screens */
+        display: block;
+    }
+
+    .bio-content {
+        padding: 20px;
+    }
+}
+
 .playlist-section {
     min-height: 90vh;
     width: 100%;
@@ -192,6 +258,7 @@ footer {
     z-index: 1;
     position: relative;
     top: 0;
+    text-shadow: 2px 2px 8px rgba(221, 219, 219, 0.688); /* Add drop shadow to text */
 }
 
 .playlist-content {
@@ -225,6 +292,7 @@ footer {
     font-size: 1.5rem;
     font-weight: normal;
     margin: 0;
+
 }
 
 .audio-player {
