@@ -1,45 +1,40 @@
-@font-face {
-    font-family: 'Bodoni 72 Smallcaps';
-    src: url('path/to/Bodoni72Smallcaps.woff2') format('woff2'),
-         url('path/to/Bodoni72Smallcaps.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 html, body {
-    font-family: 'Bodoni 72 Smallcaps', serif;
+    font-family: 'Times New Roman', sans-serif;
     margin: 0;
     padding: 0;
     color: #fff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #121212;
+    background-color: #1f1f1f;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 header {
-    background-color: #121212;
+    background-color: #1f1f1f;
     color: #fff;
     text-align: center;
     padding: 5px 0;
     width: 100%;
-    height: 400px;
+    position: relative;
+    z-index: 2;
 }
 
 header .logo-container {
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the logo */
-    flex-direction: column; /* Arrange logo and nav vertically */
+    justify-content: center;
+    flex-direction: column;
 }
 
 header .logo-container img {
-    height: 300px; /* Increase logo height */
-    margin-bottom: 20px; /* Add space between logo and nav */
+    height: 300px;
+    margin-bottom: 20px;
 }
 
 nav {
-    margin-top: 20px; /* Add space above the navigation */
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 nav ul {
@@ -51,23 +46,23 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 3rem; /* Reduce the spacing between nav items */
-    position: relative; /* Add relative positioning for the underline effect */
+    margin: 0 3rem;
+    position: relative;
 }
 
 nav ul li a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 1rem; /* Increase font size */
-    padding-bottom: 5px; /* Add padding for the underline */
-    transition: color 0.3s; /* Smooth color transition */
+    font-size: 1rem;
+    padding-bottom: 5px;
+    transition: color 0.3s;
 }
 
 nav ul li a::after {
     content: '';
     display: block;
     width: 0;
-    height: 2px; /* Set the height of the underline */
+    height: 2px;
     background: #b4b4b4;
     transition: width 0.3s;
     position: absolute;
@@ -80,56 +75,54 @@ nav ul li a.active::after {
     width: 100%;
 }
 
-/* Ensure the active page is underlined */
 nav ul li a.active {
-    color: #b4b4b4; /* Optionally change color for active link */
+    color: #b4b4b4;
 }
 
-/* New CSS for the bio section */
-.bio-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 40px 20px;
-    background-color: #121212; /* Match the background color */
-}
-
-.bio-content {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    max-width: 1200px;
+.video-section {
     width: 100%;
-    margin: 0 auto;
+    height: 70vh; /* Set the height of the video section */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background-color: #1f1f1f; /* Background color for fallback */
 }
 
-.bio-image {
-    flex: 1;
+.video-background {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-background .video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0%) blur(8px); /* Apply grayscale and blur effects */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
     text-align: center;
-    margin-right: 20px;
+    z-index: 2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Add drop shadow to text */
 }
 
-.bio-image img {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 8px;
+.video-overlay h1 {
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
 }
 
-.bio-text {
-    flex: 2;
-    text-align: left;
-}
-
-.bio-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.bio-text p {
-    font-size: 1.3rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
+.video-overlay p {
+    margin: 10px 0 0 0;
+    font-size: 1.5rem;
 }
 
 .content {
@@ -139,73 +132,79 @@ nav ul li a.active {
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    width: 100%; /* Ensure full width */
-    background-color: #121212; /* Ensure background color is consistent */
-    margin: 0; /* Ensure no extra margins */
-    padding: 0; /* Ensure no extra padding */
+    width: 100%;
+    background-color: #1f1f1f;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.fade-in-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    font-weight: normal;
+    opacity: 1;
+    font-size: 1.5rem;
+}
+
+.fade-in-text-container {
+    max-width: 1500px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the text container */
+    padding: 20px; /* Optional padding for better appearance */
 }
 
 footer {
     text-align: center;
     padding: 1rem 0;
-    background-color: #000;
+    background-color: #1f1f1f;
     color: #fff;
     width: 100%;
     position: relative;
-    z-index: 1;
+    z-index: 2;
     margin-top: auto;
 }
-
 .playlist-section {
-    background-size: cover;
-    background-position: center;
-    min-height: 80vh; /* Ensure it covers the full height of the viewport */
+    min-height: 90vh;
     width: 100%;
     display: flex;
-    flex-direction: column; /* Make flex direction column to accommodate title */
+    flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically */
+    justify-content: center;
     color: #fff;
-    padding: 0; /* Remove padding to prevent separation */
-    margin: 0; /* Ensure no extra margins */
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
     position: relative;
     text-align: center;
-}
-
-.playlist-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-    z-index: 0;
+    background-color: #1f1f1f;
 }
 
 .section-title {
-    font-size: 3rem; /* Adjusted font size */
-    font-weight: bold;
-    margin: 0; /* Remove default margins */
-    padding: 20px 0; /* Add padding for spacing */
-    z-index: 1; /* Ensure it is above other content */
-    position: relative; /* Ensure it is positioned relative to the section */
-    top: 0; /* Ensure it starts at the top of the section */
+    font-size: 3rem;
+    font-weight: normal;
+    margin: 0;
+    padding: 20px 0;
+    z-index: 1;
+    position: relative;
+    top: 0;
 }
 
 .playlist-content {
-    background-color: rgba(48, 48, 48, 0); /* Ensure it is above the background */
-    padding: 20px; /* Adjust padding */
+    padding: 20px;
     border-radius: 4px;
-    max-width: 600px; /* Adjust width */
+    max-width: 1000px;
     width: 100%;
     text-align: left;
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1; /* Ensure it is above the background */
-    margin-top: 20px; /* Space between title and content */
+    z-index: 1;
+    margin-top: 20px;
 }
 
 .album-info {
@@ -213,14 +212,6 @@ footer {
     align-items: center;
     margin-bottom: 20px;
     width: 100%;
-}
-
-.album-cover-large {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-right: 20px;
 }
 
 .track-details {
@@ -232,14 +223,8 @@ footer {
 
 .track-title-large {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: normal;
     margin: 0;
-}
-
-.track-artist-large {
-    font-size: 1rem;
-    color: #fffcfc;
-    margin: 10px 0;
 }
 
 .audio-player {
@@ -259,29 +244,22 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    max-height: 250px; /* Set max height for scrolling */
-    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 800px; /* Increase max height for more visible tracks */
+    overflow-y: auto;
 }
 
 .track {
     display: flex;
     align-items: center;
-    padding: 3px 0; /* Reduced padding */
+    padding: 5px 0; /* Reduced padding */
     border-bottom: 1px solid #44444400;
     cursor: pointer;
-    font-size: 0.8rem; /* Adjusted font size */
+    font-size: 1rem; /* Adjusted font size */
     line-height: 1.2; /* Adjusted line height */
     width: 100%;
-    transition: background-color 0.3s; /* Add transition for hover effect */
+    transition: background-color 0.3s;
 }
 
-.track img {
-    width: 55px; /* Adjusted size */
-    height: 55px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-right: 10px;
-}
 
 .track-info {
     display: flex;
@@ -291,23 +269,23 @@ footer {
 }
 
 .track-title {
-    font-weight: bold;
-    font-size: 1rem; /* Adjusted font size */
-    line-height: 1.1; /* Adjusted line height */
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1;
 }
 
 .track-artist {
-    font-size: 0.9rem; /* Adjusted font size */
+    font-size: 0.9rem;
     color: #ffffff;
-    line-height: 1.1; /* Adjusted line height */
+    line-height: 1.1;
 }
 
 .track-duration {
     text-align: right;
     padding-right: 20px;
-    font-size: 0.8rem; /* Adjusted font size */
-    line-height: 1.2; /* Adjusted line height */
-    min-width: 50px; /* Ensure duration is not overlapped */
+    font-size: 1rem; /* Adjusted font size */
+    line-height: 1.2;
+    min-width: 50px;
 }
 
 .track:hover {
