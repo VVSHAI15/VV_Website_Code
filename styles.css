@@ -99,14 +99,14 @@ nav ul li a.active {
 .social-media a:hover {
     color: #b4b4b4;
 }
-
+ 
 .video-section {
     width: 100%;
     height: 70vh; /* Set the height of the video section */
     position: relative;
     z-index: 1;
     overflow: hidden;
-    background-color: #1f1f1f; /* Background color for fallback */
+    background-color: #1e1e1e; /* Background color for fallback */
 }
 
 .video-background {
@@ -154,7 +154,7 @@ nav ul li a.active {
     justify-content: flex-start;
     text-align: center;
     width: 100%;
-    background-color: #1f1f1f;
+    background-color: #1e1e1e;
     margin: 0;
     padding: 20px;
     position: relative;
@@ -266,7 +266,7 @@ footer {
     box-sizing: border-box;
     position: relative;
     text-align: center;
-    background-color: #1f1f1f;
+    background-color: #1e1e1e;
 }
 
 .section-title {
