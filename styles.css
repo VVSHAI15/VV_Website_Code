@@ -344,6 +344,15 @@ footer {
     font-size: 1.5rem;
     cursor: pointer;
     margin-right: 10px; /* Adjust the margin as needed */
+    width: 40px; /* Set a fixed width */
+    height: 40px; /* Set a fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-player #play-pause-btn i {
+    font-size: 1.5rem;
 }
 
 .audio-player #play-pause-btn:hover {
@@ -359,7 +368,6 @@ footer {
 #audio-player #waveform-hybrid {
     flex-grow: 1;
 }
-
 
 .audio-player audio {
     width: 100%;
