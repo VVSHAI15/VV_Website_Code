@@ -77,4 +77,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Play/pause button functionality
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    playPauseBtn.addEventListener('click', function() {
+        if (currentWaveSurfer) {
+            if (currentWaveSurfer.isPlaying()) {
+                currentWaveSurfer.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                currentWaveSurfer.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+        }
+    });
+
 });

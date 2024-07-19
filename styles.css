@@ -1,5 +1,21 @@
+@font-face {
+    font-family: 'TrajanPro';
+    src: url('/fonts/TrajanPro-Regular.woff2') format('woff2'),
+         url('/fonts/TrajanPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TrajanPro';
+    src: url('/fonts/TrajanPro-Bold.woff2') format('woff2'),
+         url('/fonts/TrajanPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
 html, body {
-    font-family: 'Times New Roman', sans-serif;
+    font-family: 'TrajanPro', serif;
     margin: 0;
     padding: 0;
     color: #fff;
@@ -120,7 +136,7 @@ nav ul li a.active {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(0%) blur(8px); /* Apply grayscale and blur effects */
+    filter: grayscale(0%) blur(4px); /* Apply grayscale and blur effects */
 }
 
 .video-overlay {
@@ -317,7 +333,33 @@ footer {
 .audio-player {
     width: 100%;
     margin-top: 10px;
+    display: flex;
+    align-items: center;
 }
+
+.audio-player #play-pause-btn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.audio-player #play-pause-btn:hover {
+    color: #b4b4b4;
+}
+
+#audio-player {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#audio-player #waveform-hybrid {
+    flex-grow: 1;
+}
+
 
 .audio-player audio {
     width: 100%;
