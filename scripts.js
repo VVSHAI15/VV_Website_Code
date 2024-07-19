@@ -65,22 +65,24 @@ document.addEventListener('DOMContentLoaded', function() {
         waveSurfer.play();
     });
 
-    // Handle space bar for play/pause for the current WaveSurfer instance
-    document.addEventListener('keydown', (e) => {
-        if (e.code === 'Space' && currentWaveSurfer) {
-            e.preventDefault();
-            if (currentWaveSurfer.isPlaying()) {
-                currentWaveSurfer.pause();
-            } else {
-                currentWaveSurfer.play();
-            }
-        }
-    });
-
     // Play/pause button functionality
     const playPauseBtn = document.getElementById('play-pause-btn');
     playPauseBtn.addEventListener('click', function() {
         if (currentWaveSurfer) {
+            if (currentWaveSurfer.isPlaying()) {
+                currentWaveSurfer.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                currentWaveSurfer.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+        }
+    });
+
+    // Handle space bar for play/pause for the current WaveSurfer instance
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && currentWaveSurfer) {
+            e.preventDefault();
             if (currentWaveSurfer.isPlaying()) {
                 currentWaveSurfer.pause();
                 playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
