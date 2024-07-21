@@ -223,6 +223,44 @@ nav ul li a.active {
     padding: 20px; /* Optional padding for better appearance */
 }
 
+.film-credits-section {
+    width: 100%;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #1e1e1e;
+}
+
+.film-credits-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(221, 219, 219, 0.688);
+}
+
+.film-credits-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.film-credits-scroller {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    width: 80%;
+}
+
+.film-credits-scroller img {
+    max-height: 300px;
+    margin: 0 10px;
+    transition: transform 0.3s;
+}
+
+.film-credits-scroller img:hover {
+    transform: scale(1.1);
+}
+
 footer {
     text-align: center;
     padding: 1rem 0;
