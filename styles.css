@@ -97,6 +97,33 @@ nav ul li a.active {
     text-shadow: 2px 2px 8px rgba(221, 219, 219, 0.688); /* Add drop shadow to text */
 }
 
+/* Mobile Styles */
+@media (max-width: 500px) {
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    header, nav, main, footer {
+        padding: 10px;
+        margin: 5px;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav a {
+        padding: 10px;
+        border-bottom: 1px solid #fff;
+    }
+
+    main {
+        padding: 10px;
+    }
+}
+
 
 .social-media {
     position: absolute;
@@ -437,6 +464,48 @@ h3, h2 {
     color: #fff;
     margin: 10px 0;
     font-size: 1.2rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 500px) {
+    .section-title {
+        font-size: 2rem;
+        padding: 15px 0;
+    }
+
+    .playlist-content {
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+    .album-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .track-title-large {
+        font-size: 1.25rem;
+    }
+
+    .audio-player #play-pause-btn {
+        font-size: 1.25rem;
+        width: 35px; /* Adjust width */
+        height: 35px; /* Adjust height */
+    }
+
+    .track-list {
+        max-height: 600px; /* Adjusted max height */
+    }
+
+    .track {
+        padding: 5px 0;
+        font-size: 0.9rem; /* Further adjusted font size */
+    }
+
+    .track-duration {
+        padding-right: 10px;
+        font-size: 0.9rem; /* Further adjusted font size */
+    }
 }
 
 
