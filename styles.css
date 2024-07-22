@@ -195,7 +195,13 @@ nav ul li a.active {
     padding: 20px; /* Optional padding for better appearance */
 }
 
-.credits container h2{
+.credit_container{
+    width: 100%;
+    text-align: center;
+}
+
+
+.credit_container h2{
     font-size: 2rem;
     margin-bottom: 20px;
     color: #fff;
