@@ -97,34 +97,6 @@ nav ul li a.active {
     text-shadow: 2px 2px 8px rgba(221, 219, 219, 0.688); /* Add drop shadow to text */
 }
 
-/* Mobile Styles */
-@media (max-width: 500px) {
-    .container {
-        width: 100%;
-        padding: 0 10px;
-    }
-
-    header, nav, main, footer {
-        padding: 10px;
-        margin: 5px;
-    }
-
-    nav {
-        display: flex;
-        flex-direction: column;
-    }
-
-    nav a {
-        padding: 10px;
-        border-bottom: 1px solid #fff;
-    }
-
-    main {
-        padding: 10px;
-    }
-}
-
-
 .social-media {
     position: absolute;
     top: 30px;
@@ -223,53 +195,72 @@ nav ul li a.active {
     padding: 20px; /* Optional padding for better appearance */
 }
 
-.film-credits-section {
-    width: 100%;
-    padding: 40px 20px;
-    text-align: center;
-    background-color: #1e1e1e;
-}
-
-.film-credits-section h2 {
+.credits container h2{
     font-size: 2rem;
     margin-bottom: 20px;
     color: #fff;
     text-shadow: 2px 2px 8px rgba(221, 219, 219, 0.688);
 }
 
-.film-credits-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.credits{
+    width: 90%;
+    margin-inline: auto;
     position: relative;
+    height: 400px;
+    padding-top: 1rem;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 20%, rgba(0,0,0,1) 80%, rgba(0, 0, 0, 0));
 }
 
-.film-credits-scroller {
-    display: flex;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    width: 80%;
+@keyframes ScrollLeft {
+    to{
+        left: -200px;
+    }
 }
 
-.film-credits-scroller img {
-    max-height: 300px;
-    margin: 0 10px;
+.credits img {
+    max-height: 400px;
+    position: absolute;
+    object-fit: cover;
+    left: 100%;
+    animation-name: ScrollLeft;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.credits img:hover {
+    transform: scale(1.1);
     transition: transform 0.3s;
 }
 
-.film-credits-scroller img:hover {
-    transform: scale(1.1);
+.credits img:nth-child(1) {
+    animation-delay: calc(30s / 4 * (4 - 1) * -1);
 }
 
+.credits img:nth-child(2) {
+    animation-delay: calc(30s / 4 * (4 - 2) * -1);
+}
+
+
+.credits img:nth-child(3) {
+    animation-delay: calc(30s / 4 * (4 - 3) * -1);
+}
+
+
+.credits img:nth-child(4) {
+    animation-delay: calc(30s / 4 * (4 - 4) * -1);
+}
+
+ 
 footer {
     text-align: center;
     padding: 1rem 0;
     background-color: #1e1e1e;
     color: #fff;
     width: 100%;
-    position: relative;
-    z-index: 2;
-    margin-top: auto;
+    bottom: 0;
+    left: 0;
 }
 
 .bio-section {
