@@ -31,7 +31,6 @@
         </div>
     </header>
 
-
     <section class="video-section">
         <div class="video-background">
             <video autoplay loop muted playsinline class="video">
@@ -45,23 +44,26 @@
         </div>
     </section>
 
-    <section class = "credit_container">
+    <section class="credit_container">
         <h2>Recent Credits</h2>
         <div class="credits">
-            <img src="Images/StarboardCredits.jpg" alt="" />
-            <img src="Images/OneMoreTimeCredits.jpg" alt="" />
-            <img src="Images/VelvetCredits.jpg" alt="" />
-            <img src="Images/WildmanCredits.jpeg" alt="" />
+            <img id="img1" src="Images/StarboardCredits.jpg" alt="Starboard Credits" />
+            <img id="img2" src="Images/OneMoreTimeCredits.jpg" alt="One More Time Credits" />
+            <img id="img3" src="Images/VelvetCredits.jpg" alt="Velvet Credits" />
+            <img id="img4" src="Images/WildmanCredits.jpeg" alt="Wildman Credits" />
         </div>
+    
+        <audio id="audio1" src="Audio/SB_Theme.mp3"></audio>
+        <audio id="audio2" src="Audio/OneMoreTime.mp3"></audio>
+        <audio id="audio3" src="Audio/VelvetRose.mp3"></audio>
+        <audio id="audio4" src="Audio/wildman.mp3"></audio>
     </section>
     
-
     <section class="fade-in-section">
         <div class="fade-in-text-container">
             <p class="fade-in-text">Nothing excites me more than telling a story through music -- the ability to take a listener through a fantastical adventure, a period of sorrow, a tale of love or the feeling of betrayal. I want to impact my listeners in the way I have been impacted throughout my life by music. I want to inspire future generations of musicians, composers, filmmakers and storytellers. I want to be heard and listened to.</p>
         </div>
     </section>
-
 
     <footer>
         <p>&copy; 2024 AviShai Dayanim. All rights reserved.</p>
@@ -69,6 +71,41 @@
         <p>Website created by AviShai Dayanim</p>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function handleAudioHover(imgId, audioId) {
+                var img = document.getElementById(imgId);
+                var audio = document.getElementById(audioId);
+                var fadeOutInterval = null;
+
+                img.addEventListener('mouseover', function() {
+                    if (fadeOutInterval) {
+                        clearInterval(fadeOutInterval);
+                        fadeOutInterval = null;
+                    }
+                    audio.volume = 1.0; // Ensure volume is set to maximum before playing
+                    audio.play();
+                });
+
+                img.addEventListener('mouseout', function() {
+                    fadeOutInterval = setInterval(function() {
+                        if (audio.volume > 0.1) {
+                            audio.volume -= 0.1;
+                        } else {
+                            clearInterval(fadeOutInterval);
+                            audio.pause();
+                            audio.currentTime = 0;
+                            audio.volume = 1.0; // Reset volume for next play
+                        }
+                    }, 100); // Fade out over 1 second (100ms interval, 10 steps)
+                });
+            }
+
+            handleAudioHover('img1', 'audio1');
+            handleAudioHover('img2', 'audio2');
+            handleAudioHover('img3', 'audio3');
+            handleAudioHover('img4', 'audio4');
+        });
+    </script>
 </body>
 </html>

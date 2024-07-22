@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // WaveSurfer initialization code
     const section = {
         id: 'hybrid-creations',
         waveformId: 'waveform-hybrid'
@@ -92,4 +93,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    // Audio hover functionality for images
+    const handleAudioHover = (imgId, audioId) => {
+        const imgElement = document.getElementById(imgId);
+        const audioElement = document.getElementById(audioId);
+
+        imgElement.addEventListener('mouseover', function() {
+            console.log(`Hovered over ${imgId}`);
+            audioElement.play();
+        });
+
+        imgElement.addEventListener('mouseout', function() {
+            console.log(`Mouse left ${imgId}`);
+            audioElement.pause();
+            audioElement.currentTime = 0;
+        });
+    };
+
+    handleAudioHover('img1', 'audio1');
+    handleAudioHover('img2', 'audio2');
+    handleAudioHover('img3', 'audio3');
+    handleAudioHover('img4', 'audio4');
 });
