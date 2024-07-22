@@ -186,6 +186,7 @@ nav ul li a.active {
     font-weight: normal;
     opacity: 1;
     font-size: 1.5rem;
+
     text-shadow: 2px 2px 8px rgba(167, 165, 165, 0.27); /* Add drop shadow to text */
 }
 
@@ -316,6 +317,60 @@ footer {
     line-height: 1.6;
     color: #e0e0e0;
     text-align: justify; /* Ensure text extends fully */
+}
+
+.articles-section {
+    padding: 40px 20px;
+    background-color: #1e1e1e;
+    text-align: center;
+}
+
+.articles-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #e0e0e0;}
+
+.articles-content {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: left;
+}
+
+.article {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #ddd;
+}
+
+.article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.article h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #e0e0e0;
+}
+
+.article h3 a {
+    text-decoration: none;
+    color: #b4b4b4;
+}
+
+.article h3 a:hover {
+    text-decoration: underline;
+}
+
+.article p {
+    font-size: 1rem;
+    color: #bbb;
 }
 
 
