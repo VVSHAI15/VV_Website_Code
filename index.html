@@ -14,7 +14,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.905);
             color: white;
             display: flex;
             flex-direction: column;
@@ -22,46 +22,96 @@
             align-items: center;
             z-index: 9999;
             font-family: 'Times New Roman', Times, serif;
+            transition: opacity 1s ease;
         }
-        .start-overlay h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-        .start-overlay p {
-            font-size: 1.5em;
+        .start-overlay img {
+            width: 80%;
+            max-width: 600px;
             margin-bottom: 40px;
+            animation: fadeInDown 1.5s ease-out;
         }
         .start-button {
-            padding: 20px 40px;
+            padding: 15px 30px;
             font-size: 1.5em;
-            background: #444;
-            border: none;
-            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #ffffff6f;
+            color: rgba(255, 255, 255, 0.653);
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.3s;
+            animation: fadeIn 2s ease-out;
+            font-family: 'Times New Roman', Times, serif;
         }
         .start-button:hover {
-            background: #666;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
         }
         .fade-in {
             animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        @keyframes flyBack {
+            0% { transform: scale(1) translateY(0); }
+            100% { transform: scale(0.5) translateY(-200px); }
+        }
+        .fly-back {
+            animation: flyBack 1s ease-out forwards;
+        }
+        html, body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #1e1e1e;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        header {
+            background-color: #1e1e1e;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        header .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        header .logo-container img {
+            height: 300px;
+            margin-bottom: 20px;
+            transition: transform 1s ease-out; /* Smooth transition for fly-back */
+        }
     </style>
 </head>
 <body>
     <div class="start-overlay fade-in" id="start-overlay">
-        <h1>Welcome to AviShai Dayanim Music</h1>
-        <p>Composer - Orchestrator - Producer - Storyteller</p>
-        <button class="start-button" id="start-button">Start</button>
+        <img src="Images/Logo.png" alt="AviShai Dayanim Music Logo" id="logo-image">
+        <button class="start-button" id="start-button">I want to tell a story</button>
     </div>
     <header>
         <div class="logo-container">
             <a href="index.html">
-                <img src="Images/Logo.png" alt="Logo">
+                <img src="Images/Logo.png" alt="Logo" id="header-logo">
             </a>
         </div>
         <nav>
@@ -153,7 +203,14 @@
             }
 
             document.getElementById('start-button').addEventListener('click', function() {
-                document.getElementById('start-overlay').style.display = 'none';
+                var logoImage = document.getElementById('logo-image');
+                logoImage.classList.add('fly-back');
+                setTimeout(function() {
+                    document.getElementById('start-overlay').style.opacity = '0';
+                    setTimeout(function() {
+                        document.getElementById('start-overlay').style.display = 'none';
+                    }, 1000);
+                }, 1000);
 
                 handleAudioHover('img1', 'audio1');
                 handleAudioHover('img2', 'audio2');
