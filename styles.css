@@ -1,21 +1,6 @@
-@font-face {
-    font-family: 'TrajanPro';
-    src: url('/fonts/TrajanPro-Regular.woff2') format('woff2'),
-         url('/fonts/TrajanPro-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'TrajanPro';
-    src: url('/fonts/TrajanPro-Bold.woff2') format('woff2'),
-         url('/fonts/TrajanPro-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
 
 html, body {
-    font-family: 'TrajanPro', serif;
+    font-family: 'Times New Roman', serif;
     margin: 0;
     padding: 0;
     color: #fff;
@@ -684,4 +669,3 @@ h3, h2 {
 .contact-form button:hover {
     background-color: #9a9a9a;
 }
-
