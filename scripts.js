@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     // WaveSurfer initialization code
     const section = {
