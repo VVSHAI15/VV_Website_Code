@@ -1,4 +1,4 @@
-
+/* General Styles */
 html, body {
     font-family: 'Times New Roman', serif;
     margin: 0;
@@ -11,6 +11,7 @@ html, body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/* Header Styles */
 header {
     background-color: #1e1e1e;
     color: #fff;
@@ -33,6 +34,7 @@ header .logo-container img {
     margin-bottom: 20px;
 }
 
+/* Navigation Styles */
 nav {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -82,6 +84,7 @@ nav ul li a.active {
     text-shadow: 2px 2px 8px rgba(221, 219, 219, 0.688); /* Add drop shadow to text */
 }
 
+/* Social Media Styles */
 .social-media {
     position: absolute;
     top: 30px;
@@ -99,7 +102,8 @@ nav ul li a.active {
 .social-media a:hover {
     color: #b4b4b4;
 }
- 
+
+/* Video Section Styles */
 .video-section {
     width: 100%;
     height: 70vh; /* Set the height of the video section */
@@ -146,6 +150,7 @@ nav ul li a.active {
     font-size: 1.5rem;
 }
 
+/* Content Styles */
 .content {
     flex: 1;
     display: flex;
@@ -161,6 +166,7 @@ nav ul li a.active {
     z-index: 2;
 }
 
+/* Fade-in Section Styles */
 .fade-in-section {
     width: 100%;
     display: flex;
@@ -171,7 +177,6 @@ nav ul li a.active {
     font-weight: normal;
     opacity: 1;
     font-size: 1.5rem;
-
     text-shadow: 2px 2px 8px rgba(167, 165, 165, 0.27); /* Add drop shadow to text */
 }
 
@@ -181,20 +186,20 @@ nav ul li a.active {
     padding: 20px; /* Optional padding for better appearance */
 }
 
-.credit_container{
+/* Credit Section Styles */
+.credit_container {
     width: 100%;
     text-align: center;
 }
 
-
-.credit_container h2{
+.credit_container h2 {
     font-size: 2rem;
     margin-bottom: 20px;
     color: #fff;
     text-shadow: 2px 2px 8px rgba(221, 219, 219, 0.688);
 }
 
-.credits{
+.credits {
     width: 90%;
     margin-inline: auto;
     position: relative;
@@ -205,7 +210,7 @@ nav ul li a.active {
 }
 
 @keyframes ScrollLeft {
-    to{
+    to {
         left: -200px;
     }
 }
@@ -234,17 +239,15 @@ nav ul li a.active {
     animation-delay: calc(30s / 4 * (4 - 2) * -1);
 }
 
-
 .credits img:nth-child(3) {
     animation-delay: calc(30s / 4 * (4 - 3) * -1);
 }
-
 
 .credits img:nth-child(4) {
     animation-delay: calc(30s / 4 * (4 - 4) * -1);
 }
 
- 
+/* Footer Styles */
 footer {
     text-align: center;
     padding: 1rem 0;
@@ -255,6 +258,7 @@ footer {
     left: 0;
 }
 
+/* Bio Section Styles */
 .bio-section {
     display: flex;
     justify-content: center;
@@ -304,6 +308,7 @@ footer {
     text-align: justify; /* Ensure text extends fully */
 }
 
+/* Articles Section Styles */
 .articles-section {
     padding: 40px 20px;
     background-color: #1e1e1e;
@@ -313,7 +318,8 @@ footer {
 .articles-section h2 {
     font-size: 2rem;
     margin-bottom: 30px;
-    color: #e0e0e0;}
+    color: #e0e0e0;
+}
 
 .articles-content {
     display: flex;
@@ -358,19 +364,7 @@ footer {
     color: #bbb;
 }
 
-
-@media screen and (max-width: 768px) {
-    .bio-image {
-        float: none; /* Remove float on smaller screens */
-        margin: 0 auto 20px auto; /* Center image on smaller screens */
-        display: block;
-    }
-
-    .bio-content {
-        padding: 20px;
-    }
-}
-
+/* Playlist Section Styles */
 .playlist-section {
     min-height: 90vh;
     width: 100%;
@@ -429,7 +423,6 @@ footer {
     font-size: 1.5rem;
     font-weight: normal;
     margin: 0;
-
 }
 
 .audio-player {
@@ -499,7 +492,6 @@ footer {
     transition: background-color 0.3s;
 }
 
-
 .track-info {
     display: flex;
     flex-direction: column;
@@ -535,6 +527,7 @@ footer {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Heading Styles */
 h3, h2 {
     color: #fff;
     margin: 10px 0;
@@ -542,6 +535,19 @@ h3, h2 {
 }
 
 /* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .bio-image {
+        float: none; /* Remove float on smaller screens */
+        margin: 0 auto 20px auto; /* Center image on smaller screens */
+        display: block;
+    }
+
+    .bio-content {
+        padding: 20px;
+    }
+}
+
+/* Additional Mobile Styles */
 @media (max-width: 500px) {
     .section-title {
         font-size: 2rem;
@@ -602,6 +608,7 @@ h3, h2 {
     }
 }
 
+/* Contact Section Styles */
 .contact-section {
     display: flex;
     flex-direction: column;
@@ -612,7 +619,6 @@ h3, h2 {
     width: 100%;
     box-sizing: border-box;
     color: #ffffff;
-
 }
 
 .contact-section h2 {
@@ -663,9 +669,180 @@ h3, h2 {
     cursor: pointer;
     transition: background-color 0.3s;
     font-weight: normal;
-
 }
 
 .contact-form button:hover {
     background-color: #9a9a9a;
+}
+
+
+/* Mobile Styles */
+@media screen and (max-width: 650px) {
+    .bio-image {
+        float: none; /* Remove float on smaller screens */
+        margin: 0 auto 20px auto; /* Center image on smaller screens */
+        display: block;
+    }
+
+    .bio-content {
+        padding: 20px;
+    }
+
+    .articles-content {
+        flex-direction: column;
+    }
+
+    .article {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    header .logo-container {
+        padding-top: 20px; /* Add padding to create space */
+    }
+}
+
+@media (max-width: 500px) {
+    .section-title {
+        font-size: 2rem;
+        padding: 15px 0;
+    }
+
+    .playlist-content {
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .album-info {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 10px;
+    }
+
+    .track-title-large {
+        font-size: 1.25rem;
+    }
+
+    .audio-player {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .audio-player #play-pause-btn {
+        font-size: 1.25rem;
+        width: 35px; /* Adjust width */
+        height: 35px; /* Adjust height */
+    }
+
+    #audio-player {
+        flex-direction: column;
+    }
+
+    #audio-player #waveform-hybrid {
+        width: 100%;
+    }
+
+    .track-list {
+        max-height: 600px; /* Adjusted max height */
+        width: 100%;
+    }
+
+    .track {
+        padding: 5px 0;
+        font-size: 0.9rem; /* Further adjusted font size */
+    }
+
+    .track-info {
+        width: 100%;
+    }
+
+    .track-duration {
+        padding-right: 10px;
+        font-size: 0.9rem; /* Further adjusted font size */
+    }
+
+    header .logo-container img {
+        height: 150px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center; /* Center the navigation items */
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+
+    .bio-content {
+        padding: 10px;
+    }
+
+    .fade-in-section {
+        padding: 20px 10px;
+        font-size: 1rem;
+    }
+
+    .video-overlay h1 {
+        font-size: 2rem;
+    }
+
+    .video-overlay p {
+        font-size: 1rem;
+    }
+
+    .articles-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .article h3 {
+        font-size: 1.25rem;
+    }
+
+    .article p {
+        font-size: 0.9rem;
+    }
+
+    footer {
+        padding: 0.5rem 0;
+    }
+
+    .contact-section {
+        padding: 20px 10px;
+    }
+
+    .contact-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-form {
+        padding: 10px;
+    }
+
+    .contact-form label,
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+        font-size: 0.9rem;
+    }
+
+    .listen-page {
+        width: 100%; /* Ensure the listen page is not too wide */
+        padding: 10px; /* Add padding for better appearance */
+    }
+
+    .credits {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 40px; /* Increase gap between images */
+    }
+
+    .credits img {
+        margin: 20px 0; /* Increase margin to spread out the images more */
+        max-width: 90%; /* Ensure images are not too wide */
+        width: 100%; /* Ensure full width */
+        height: auto; /* Maintain aspect ratio */
+    }
 }
