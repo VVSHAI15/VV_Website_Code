@@ -4,50 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome - AviShai Dayanim</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Fullscreen overlay styles */
-        body, html {
-            margin: 0;
-            padding: 0;
+        /* Overlay styling */
+        .overlay-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
+            background: rgba(0, 0, 0, 0.905);
+            color: white;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #1e1e1e;
-            font-family: Arial, sans-serif;
+            z-index: 9999;
+            font-family: 'Times New Roman', Times, serif;
+            transition: opacity 1s ease;
         }
-
-        .overlay-container {
-            text-align: center;
-            color: white;
+        .overlay-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1.5s ease-out;
         }
-
-        .overlay-button {
+        .overlay-container img {
+            width: 80%;
+            max-width: 600px;
+            margin-bottom: 40px;
+            animation: fadeInDown 1.5s ease-out;
+        }
+        .overlay-container .start-button {
             padding: 15px 30px;
-            font-size: 1.5rem;
-            background: #444;
-            color: #fff;
-            border: none;
+            font-size: 1.5em;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #ffffff6f;
+            color: rgba(255, 255, 255, 0.653);
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.3s;
+            animation: fadeIn 2s ease-out;
+            font-family: 'Times New Roman', Times, serif;
         }
-
-        .overlay-button:hover {
-            background: #666;
+        .overlay-container .start-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
+    <!-- Overlay Content -->
     <div class="overlay-container">
+        <img src="Images/Logo.png" alt="AviShai Dayanim Music Logo">
         <h1>Welcome to AviShai Dayanim Music</h1>
-        <button class="overlay-button" id="enter-site">Enter</button>
+        <button class="start-button" id="enter-site">Enter</button>
     </div>
 
+    <!-- JavaScript to handle interaction and redirect -->
     <script>
         document.getElementById('enter-site').addEventListener('click', function() {
-            // Store that the user has interacted
-            localStorage.setItem('userInteracted', 'true');
-            // Redirect to the main homepage
+            // Set the flag in localStorage
+            localStorage.setItem('userVisited', 'true');
+            // Redirect to the main page
             window.location.href = 'index.html';
         });
     </script>
