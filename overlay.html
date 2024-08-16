@@ -24,8 +24,9 @@
             transition: opacity 1s ease;
         }
         .overlay-container h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 20px;
+            font-weight: normal;
             animation: fadeInDown 1.5s ease-out;
         }
         .overlay-container img {
@@ -63,13 +64,15 @@
     <!-- Overlay Content -->
     <div class="overlay-container">
         <img src="Images/Logo.png" alt="AviShai Dayanim Music Logo">
-        <h1>I want to tell a Story</h1>
+        <h1>I want to tell a story</h1>
         <button class="start-button" id="enter-site">Enter</button>
     </div>
 
     <!-- JavaScript to handle interaction and redirect -->
     <script>
         document.getElementById('enter-site').addEventListener('click', function() {
+            // Set session storage to indicate the user has entered the site
+            sessionStorage.setItem('sessionVisited', 'true');
             // Redirect to the main page
             window.location.href = 'index.html';
         });

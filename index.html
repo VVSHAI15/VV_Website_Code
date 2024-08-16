@@ -10,9 +10,13 @@
     
     <!-- JavaScript to handle redirect on first visit -->
     <script>
+        // Check if the user has visited the site this session
         if (!sessionStorage.getItem('sessionVisited')) {
-            sessionStorage.setItem('sessionVisited', 'true');  // Mark session as visited
+            // Redirect to overlay.html
             window.location.href = 'overlay.html';
+        } else {
+            // Set sessionStorage to indicate this session has visited
+            sessionStorage.setItem('sessionVisited', 'true');
         }
     </script>
 </head>
@@ -90,8 +94,6 @@
     <!-- JavaScript for Audio Hover -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Set localStorage flag to indicate the user has visited
-            sessionStorage.setItem('sessionVisited', 'true');
 
             function handleAudioHover(imgId, audioId) {
                 var img = document.getElementById(imgId);
