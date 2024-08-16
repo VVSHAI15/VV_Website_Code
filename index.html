@@ -10,8 +10,8 @@
     
     <!-- JavaScript to handle redirect on first visit -->
     <script>
-        // Redirect to overlay.html if the user hasn't visited before
-        if (!localStorage.getItem('userVisited')) {
+        if (!sessionStorage.getItem('sessionVisited')) {
+            sessionStorage.setItem('sessionVisited', 'true');  // Mark session as visited
             window.location.href = 'overlay.html';
         }
     </script>
@@ -91,7 +91,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Set localStorage flag to indicate the user has visited
-            localStorage.setItem('userVisited', 'true');
+            sessionStorage.setItem('sessionVisited', 'true');
 
             function handleAudioHover(imgId, audioId) {
                 var img = document.getElementById(imgId);
