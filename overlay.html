@@ -71,8 +71,8 @@
     <!-- JavaScript to handle interaction and redirect -->
     <script>
         document.getElementById('enter-site').addEventListener('click', function() {
-            // Set session storage to indicate the user has entered the site
-            sessionStorage.setItem('sessionVisited', 'true');
+            // Set the session storage to indicate the user has visited
+            sessionStorage.setItem('visited', 'true');
             // Redirect to the main page
             window.location.href = 'index.html';
         });
