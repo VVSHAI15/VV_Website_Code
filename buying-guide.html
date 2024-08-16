@@ -15,7 +15,190 @@
 
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+         /* General Styles */
+         html, body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #1e1e1e;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #1e1e1e;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        header .logo-container img {
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        
+        /* Navigation Styles */
+        nav {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+        
+        nav ul li {
+            margin: 0 3rem;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #b4b4b4;
+            transition: width 0.3s;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+            text-shadow: 2px 2px 8px rgba(221, 219, 219, 0.688); /* Add drop shadow to text */
+        }
+        
+        nav ul li a.active {
+            color: #b4b4b4;
+            text-shadow: 2px 2px 8px rgba(221, 219, 219, 0.688); /* Add drop shadow to text */
+        }
 
+        /* Main Content Styles */
+        main {
+            max-width: 1400px; /* Increase the max-width to allow more space */margin: auto;
+            padding: 40px20px;
+        }
+
+        /* Accordion Styles */.accordion {
+            width: 90%; /* Make the accordion wider, occupying 90% of the screen */margin: 0 auto; /* Center the accordion within the main content */
+        }
+
+        .accordion-button {
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            width: 100%; /* Full width of the accordion container */border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box; /* Include padding in the width calculation */
+        }
+
+        .accordion-button:hover {
+            background-color: #444;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #444;
+            padding: 15px;
+            width: 100%; /* Full width of the accordion container */box-sizing: border-box; /* Include padding in the width calculation */
+        }
+
+        .accordion-contentul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .accordion-contentulli {
+            margin-bottom: 10px;
+            word-wrap: break-word; /* Ensures long words break and wrap within the container */white-space: normal; /* Allows text to wrap to the next line */overflow-wrap: break-word; /* Ensures the text doesn't overflow its container */
+        }
+
+        .accordion-contentullistrong {
+            font-weight: bold;
+        }
+
+        .accordion-contentullia {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .accordion-contentullia:hover {
+            text-decoration: underline;
+        }
+
+        .accordion-content.open {
+            max-height: 500px; /* Adjust as necessary */
+        }
+
+        /* Footer Styles */footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1e1e1e;
+            color: #fff;
+        }
+
+        /* Mobile Styles */@media screen and (max-width: 768px) {
+            main {
+                padding: 20px10px;
+            }
+
+            mainh1 {
+                font-size: 2rem;
+            }
+
+            mainh2 {
+                font-size: 1.75rem;
+            }
+
+            mainh3 {
+                font-size: 1.25rem;
+            }
+
+            mainp, mainul, mainli {
+                font-size: 1rem;
+            }
+
+            .accordion {
+                width: 100%; /* Use full width on smaller screens */
+            }
+        }
+
+    </style>
 </head>
 <body>
     <header>
@@ -41,65 +224,25 @@
         </div>
     </header>
 
+    
     <main>
         <section id="overview">
             <h1>Virtual Library Buying Guide</h1>
-            <p>Virtual Libraries are some of the most important tools when it comes to being a film composer. Libraries give us the ability to create powerful mockups and to capture our vision as composers inside of a DAW. The world of plugins is saturated, expensive, and sometimes, a bit dishonest. More expensive libraries do not translate to a better composition, and a skilled composer can write incredible music with budget libraries.</p>
+            <p>Virtual Libraries are some of the most important tools...</p>
         </section>
 
-        <section id="free-budget">
-            <h2>Free & Budget Libraries</h2>
-
-            <h3>Free</h3>
-            <ul>
-                <li><a href="https://www.native-instruments.com/en/products/komplete/bundles/komplete-start/" target="_blank">Komplete Start</a>
-                    <ul>
-                        <li>Native Instruments is a staple when it comes to the plugin industry. This bundle includes a great collection of sounds and kontakt player. If you were going to start from somewhere, this is the bundle to download</li>
-                    </ul>
-                </li>
-                <li><a href="https://impactsoundworks.com/products/category/free-instruments/" target="_blank">Impact Soundworks</a>
-                    <ul>
-                        <li>Pallete: Primary Colors (Full Orchestra)</li>
-                        <li>Heritage Percussion (Hand Percussion)</li>
-                        <li>Shreddage Stratus (Guitar)</li>
-                        <li>Shreddage Precision (Bass)</li>
-                        <li>Super Audio Boy (Early Game Inspired Synth)</li>
-                        <li>Cinematic Synthetic Drums</li>
-                    </ul>
-                </li>
-                <li><a href="https://heavyocity.com/product-category/foundations/" target="_blank">Heavyocity Foundations</a>
-                    <ul>
-                        <li>Staccato Brass</li>
-                        <li>Emotive Choir</li>
-                        <li>Synth Bass</li>
-                        <li>Nylon Guitar</li>
-                        <li>Staccato Strings</li>
-                        <li>Piano</li>
-                    </ul>
-                </li>
-                <li><a href="https://vital.audio/" target="_blank">Vital Wavetable Synth</a></li>
-                <li><a href="https://projectsam.com/series/the-free-orchestra" target="_blank">Project Sam - The Free Orchestra</a>
-                    <ul>
-                        <li>The Free Orchestra 1</li>
-                        <li>The Free Orchestra 2</li>
-                    </ul>
-                </li>
-                <li><a href="https://www.spitfireaudio.com/bbc-symphony-orchestra-discover?_gl=1*h8aqt5*_up*MQ..&gclid=CjwKCAjw8fu1BhBsEiwAwDrsjEsfAUzcbKgeDw2UbaF7qikRlvAZso8DtnpvXBxGUCHj7F-RhGNxghoCZgMQAvD_BwE#overview" target="_blank">Spitfire Audio BBCSO Discover Orchestra</a></li>
-                <li><a href="https://thecrowhillcompany.com/vaults-free-plugin/" target="_blank">Crow On The Hill Vaults</a>
-                    <ul>
-                        <li>Attic Grand</li>
-                        <li>R+D Strings</li>
-                        <li>Celestatone</li>
-                        <li>Shimmer Guitar</li>
-                        <li>Chorus Synth</li>
-                        <li>Studio Drums</li>
-                    </ul>
-                </li>
-            </ul>
-
-            <h3>Budget</h3>
-            <p><!-- Budget content here --></p>
-        </section>
+        <!-- Accordion Section -->
+        <div class="accordion">
+            <button class="accordion-button">Free & Budget Libraries</button>
+            <div class="accordion-content">
+                <h3>Free</h3>
+                <ul>
+                    <li><strong>Komplete Start</strong><br>Native Instruments is a staple when it comes to the plugin industry >Native Instruments is a staple when it comes to the plugin industry >Native Instruments is a staple when it comes to the plugin industry >Native Instruments is a staple when it comes to the plugin industry >Native Instruments is a staple when it comes to the plugin industry</li>
+                    <li><strong>Impact Soundworks</strong><br>Impact Soundworks has curated an incredible selection of instruments...</li>
+                    <!-- More items -->
+                </ul>
+            </div>
+        </div>
 
         <section id="all-in-one">
             <h2>All-In-One Libraries</h2>
@@ -109,45 +252,29 @@
             </ul>
         </section>
 
-        <section id="orchestra">
-            <h2>Orchestra</h2>
-            <p><!-- Orchestra content here --></p>
-        </section>
-
-        <section id="woodwinds">
-            <h2>Woodwinds</h2>
-            <p><!-- Woodwinds content here --></p>
-        </section>
-
-        <section id="brass">
-            <h2>Brass</h2>
-            <p><!-- Brass content here --></p>
-        </section>
-
-        <section id="strings">
-            <h2>Strings</h2>
-            <p><!-- Strings content here --></p>
-        </section>
-
-        <section id="percussion">
-            <h2>Percussion</h2>
-            <p><!-- Percussion content here --></p>
-        </section>
-
-        <section id="pianos">
-            <h2>Pianos</h2>
-            <p><!-- Pianos content here --></p>
-        </section>
-
-        <section id="synths">
-            <h2>Synths</h2>
-            <p><!-- Synths content here --></p>
-        </section>
+        <!-- Continue with more sections as needed -->
     </main>
 
     <footer>
         <p>&copy; 2024 AviShai Dayanim. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript for Accordion -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var accordions = document.querySelectorAll('.accordion-button');
+        
+            accordions.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var content = this.nextElementSibling;
+                    content.classList.toggle('open');
+                    if (content.classList.contains('open')) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
+        });
+    </script>
 </body>
-</html>
