@@ -119,3 +119,5 @@ document.addEventListener("DOMContentLoaded", function () {
   handleAudioHover("img3", "audio3");
   handleAudioHover("img4", "audio4");
 });
+
+

@@ -7,108 +7,17 @@
     <title>Home - AviShai Dayanim</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Styles for the start overlay */
-        .start-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.905);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            font-family: 'Times New Roman', Times, serif;
-            transition: opacity 1s ease;
+    
+    <!-- JavaScript to handle redirect on first visit -->
+    <script>
+        // Redirect to overlay.html if the user hasn't visited before
+        if (!localStorage.getItem('userVisited')) {
+            window.location.href = 'overlay.html';
         }
-        .start-overlay img {
-            width: 80%;
-            max-width: 600px;
-            margin-bottom: 40px;
-            animation: fadeInDown 1.5s ease-out;
-        }
-        .start-button {
-            padding: 15px 30px;
-            font-size: 1.5em;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid #ffffff6f;
-            color: rgba(255, 255, 255, 0.653);
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
-            animation: fadeIn 2s ease-out;
-            font-family: 'Times New Roman', Times, serif;
-        }
-        .start-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
-        }
-        .fade-in {
-            animation: fadeIn 1s ease-in-out;
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes flyBack {
-            0% { transform: scale(1) translateY(0); }
-            100% { transform: scale(0.5) translateY(-200px); }
-        }
-        .fly-back {
-            animation: flyBack 1s ease-out forwards;
-        }
-        html, body {
-            font-family: 'Times New Roman', serif;
-            margin: 0;
-            padding: 0;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: #1e1e1e;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-        }
-
-        header {
-            background-color: #1e1e1e;
-            color: #fff;
-            text-align: center;
-            padding: 5px 0;
-            width: 100%;
-            position: relative;
-            z-index: 2;
-        }
-
-        header .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        header .logo-container img {
-            height: 300px;
-            margin-bottom: 20px;
-            transition: transform 1s ease-out; /* Smooth transition for fly-back */
-        }
-    </style>
+    </script>
 </head>
 <body>
-    <div class="start-overlay fade-in" id="start-overlay">
-        <img src="Images/Logo.png" alt="AviShai Dayanim Music Logo" id="logo-image">
-        <button class="start-button" id="start-button">I want to tell a story</button>
-    </div>
+    <!-- Header Section -->
     <header>
         <div class="logo-container">
             <a href="index.html">
@@ -132,6 +41,7 @@
         </div>
     </header>
 
+    <!-- Video Section -->
     <section class="video-section">
         <div class="video-background">
             <video autoplay loop muted playsinline class="video">
@@ -145,6 +55,7 @@
         </div>
     </section>
 
+    <!-- Credits Section -->
     <section class="credit_container">
         <audio id="audio1" src="Audio/SB_Theme.mp3"></audio>
         <audio id="audio2" src="Audio/OneMoreTime.mp3"></audio>
@@ -160,23 +71,28 @@
             <img id="img4" src="Images/WildmanCredits.jpg" alt="Wildman Credits" />
             <img id="img5" src="Images/WheelofFortune.jpg" alt="WheelofFortune Credits" />
         </div>
-    
     </section>
     
+    <!-- Fade-in Text Section -->
     <section class="fade-in-section">
         <div class="fade-in-text-container">
-            <p class="fade-in-text">Nothing excites me more than telling a story through music -- the ability to take a listener through a fantastical adventure, a period of sorrow, a tale of love or the feeling of betrayal. I want to impact my listeners in the way I have been impacted throughout my life by music. I want to inspire future generations of musicians, composers, filmmakers and storytellers. I want to be heard and listened to.</p>
+            <p class="fade-in-text">Nothing excites me more than telling a story through music -- the ability to take a listener through a fantastical adventure, a period of sorrow, a tale of love or the feeling of betrayal. I want to impact my listeners in the way I have been impacted throughout my life by music. I want to inspire future generations of musicians, composers, filmmakers, and storytellers. I want to be heard and listened to.</p>
         </div>
     </section>
 
+    <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 AviShai Dayanim. All rights reserved.</p>
         <p>www.avishaidayanimmusic.com</p>
         <p>Website created by AviShai Dayanim</p>
     </footer>
 
+    <!-- JavaScript for Audio Hover -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Set localStorage flag to indicate the user has visited
+            localStorage.setItem('userVisited', 'true');
+
             function handleAudioHover(imgId, audioId) {
                 var img = document.getElementById(imgId);
                 var audio = document.getElementById(audioId);
@@ -187,7 +103,7 @@
                         clearInterval(fadeOutInterval);
                         fadeOutInterval = null;
                     }
-                    audio.volume = 1.0; // Ensure volume is set to maximum before playing
+                    audio.volume = 1.0;
                     audio.play();
                 });
 
@@ -199,28 +115,18 @@
                             clearInterval(fadeOutInterval);
                             audio.pause();
                             audio.currentTime = 0;
-                            audio.volume = 1.0; // Reset volume for next play
+                            audio.volume = 1.0;
                         }
-                    }, 100); // Fade out over 1 second (100ms interval, 10 steps)
+                    }, 100);
                 });
             }
 
-            document.getElementById('start-button').addEventListener('click', function() {
-                var logoImage = document.getElementById('logo-image');
-                logoImage.classList.add('fly-back');
-                setTimeout(function() {
-                    document.getElementById('start-overlay').style.opacity = '0';
-                    setTimeout(function() {
-                        document.getElementById('start-overlay').style.display = 'none';
-                    }, 1000);
-                }, 1000);
-
-                handleAudioHover('img1', 'audio1');
-                handleAudioHover('img2', 'audio2');
-                handleAudioHover('img3', 'audio3');
-                handleAudioHover('img4', 'audio4');
-                handleAudioHover('img5', 'audio5');
-            });
+            // Initialize audio hover effects
+            handleAudioHover('img1', 'audio1');
+            handleAudioHover('img2', 'audio2');
+            handleAudioHover('img3', 'audio3');
+            handleAudioHover('img4', 'audio4');
+            handleAudioHover('img5', 'audio5');
         });
     </script>
 </body>
