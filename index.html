@@ -10,13 +10,9 @@
     
     <!-- JavaScript to handle redirect on first visit -->
     <script>
-        // Check if the user has visited the site this session
-        if (!sessionStorage.getItem('sessionVisited')) {
-            // Redirect to overlay.html
+        // Check if the user has already visited during this session
+        if (!sessionStorage.getItem('visited')) {
             window.location.href = 'overlay.html';
-        } else {
-            // Set sessionStorage to indicate this session has visited
-            sessionStorage.setItem('sessionVisited', 'true');
         }
     </script>
 </head>
