@@ -108,62 +108,70 @@
             padding: 40px20px;
         }
 
-        /* Accordion Styles */.accordion {
-            width: 90%; /* Make the accordion wider, occupying 90% of the screen */margin: 0 auto; /* Center the accordion within the main content */
-        }
 
-        .accordion-button {
-            background-color: #333;
-            color: white;
-            cursor: pointer;
-            padding: 15px;
-            width: 100%; /* Full width of the accordion container */border: none;
-            text-align: left;
-            outline: none;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-            box-sizing: border-box; /* Include padding in the width calculation */
-        }
 
-        .accordion-button:hover {
-            background-color: #444;
-        }
+    .accordion-button {
+        font-family: 'Times New Roman', serif;
+        background-color: #333;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 20px;
+        transition: background-color 0.3s ease;
+        padding-left: 30px; /* Increase padding for more space on the sides */
+        padding-right: 30px;
+    }
 
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.2s ease-out;
-            background-color: #444;
-            padding: 15px;
-            width: 100%; /* Full width of the accordion container */box-sizing: border-box; /* Include padding in the width calculation */
-        }
+    .accordion-button:hover {
+        background-color: #444;
+    }
 
-        .accordion-contentul {
-            list-style-type: none;
-            padding: 0;
-        }
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background-color: #444;
+        padding-left: 30px; /* Increase padding for more space on the sides */
+        padding-right: 30px;
+    }
 
-        .accordion-contentulli {
-            margin-bottom: 10px;
-            word-wrap: break-word; /* Ensures long words break and wrap within the container */white-space: normal; /* Allows text to wrap to the next line */overflow-wrap: break-word; /* Ensures the text doesn't overflow its container */
-        }
+    .accordion-contentul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
 
-        .accordion-contentullistrong {
-            font-weight: bold;
-        }
+    .accordion-contentulli {
+        margin-bottom: 10px;
+        word-wrap: break-word; /* Ensures long words break and wrap within the container */white-space: normal; /* Allows text to wrap to the next line */overflow-wrap: break-word; /* Ensures the text doesn't overflow its container */
+    }
 
-        .accordion-contentullia {
-            color: #ddd;
-            text-decoration: none;
-        }
+    .accordion-contentullistrong {
+        font-weight: bold;
+    }
 
-        .accordion-contentullia:hover {
-            text-decoration: underline;
-        }
+    .accordion-contentullia {
+        color: #ddd;
+        text-decoration: none;
+    }
 
-        .accordion-content.open {
-            max-height: 500px; /* Adjust as necessary */
-        }
+    .accordion-contentullia:hover {
+        text-decoration: underline;
+    }
+
+    .accordion-content.open {
+        max-height: 500px; /* Adjust as necessary */padding-top: 15px; /* Add padding only when open */padding-bottom: 15px; /* Add padding only when open */
+    }
+
+    .accordion {
+        width: 90%;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
 
         /* Footer Styles */footer {
             text-align: center;
@@ -196,6 +204,15 @@
             .accordion {
                 width: 100%; /* Use full width on smaller screens */
             }
+        }
+
+        /* General link styles */
+        a {
+            color: inherit; /* Makes the link color the same as the surrounding text */text-decoration: none; /* Removes underline */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Optional: Underline on hover to indicate it's a link */
         }
 
     </style>
@@ -233,14 +250,72 @@
 
         <!-- Accordion Section -->
         <div class="accordion">
-            <button class="accordion-button">Free & Budget Libraries</button>
+            <button class="accordion-button">Free Libraries</button>
+            <div class="accordion-content">
+                <h3><a href="https://www.native-instruments.com/en/products/komplete/bundles/komplete-start/"target="_blank">Native Instrument's Komplete Start</a></h3>
+                <p>This is a powerful free collection from Native Instruments, featuring a wide range of instruments and sounds perfect for beginners and pros alike.</p>
+                <h3><a href="https://impactsoundworks.com/products/category/free-instruments/"target="_blank">Impact Soundworks Freebies</a></h3>
+                <p>This is a powerful free collection from Native Instruments, featuring a wide range of instruments and sounds perfect for beginners and pros alike.</p>
+                <h3><a href="https://heavyocity.com/product-category/foundations/"target="_blank">Heavyocity Foundations</a></h3>
+                <p>This is a powerful free collection from Native Instruments, featuring a wide range of instruments and sounds perfect for beginners and pros alike.</p>
+                <h3><a href="https://vital.audio/"target="_blank">Vital Wavetable Synth</a></h3>
+                <p>This is a powerful free collection from Native Instruments, featuring a wide range of instruments and sounds perfect for beginners and pros alike.</p>
+                <h3><a href="https://projectsam.com/series/the-free-orchestra"target="_blank">Project Sam Free Orchestras</a></h3>
+                <p>This is a powerful free collection from Native Instruments, featuring a wide range of instruments and sounds perfect for beginners and pros alike.</p>
+                <h3><a href="https://www.spitfireaudio.com/bbc-symphony-orchestra-discover?_gl=1*h8aqt5*_up*MQ..&gclid=CjwKCAjw8fu1BhBsEiwAwDrsjEsfAUzcbKgeDw2UbaF7qikRlvAZso8DtnpvXBxGUCHj7F-RhGNxghoCZgMQAvD_BwE"target="_blank">Spitfire Audio BBCSO Discover Orchestra</a></h3>
+                <p>This is a powerful free collection from Native Instruments, featuring a wide range of instruments and sounds perfect for beginners and pros alike.</p>
+                <h3><a href="https://thecrowhillcompany.com/vaults-free-plugin/"target="_blank">Crow on the Hill Vaults</a></h3>
+                <p>This is a powerful free collection from Native Instruments, featuring a wide range of instruments and sounds perfect for beginners and pros alike.</p>
+            </div>
+            
+            <button class="accordion-button">Budget Libraries</button>
+            <div class="accordion-content">
+                <h3><a href="https://www.spitfireaudio.com/originals"target="_blank">Spitfire Audio's Original Series - $29</a></h3>
+                <p>This is a powerful free collection from Native Instruments, featuring a wide range of instruments and sounds perfect for beginners and pros alike.</p>
+                <h3><a href="https://www.native-instruments.com/en/products/komplete/bundles/komplete-14-select/"target="_blank">Native Instruments Komplete Select - $99</a></h3>
+                <p>This is a powerful free collection from Native Instruments, featuring a wide range of instruments and sounds perfect for beginners and pros alike.</p>
+                <h3><a href="https://www.audioimperia.com/product/nucleus-lite-edition/"target="_blank">Audio Imperia Nucleus Lite - $99</a></h3>
+                <p>This is a powerful free collection from Native Instruments, featuring a wide range of instruments and sounds perfect for beginners and pros alike.</p>
+            </div>
+
+            <button class="accordion-button">All-In-One Libraries</button>
             <div class="accordion-content">
                 <h3>Free</h3>
-                <ul>
-                    <li><strong>Komplete Start</strong><br>Native Instruments is a staple when it comes to the plugin industry >Native Instruments is a staple when it comes to the plugin industry >Native Instruments is a staple when it comes to the plugin industry >Native Instruments is a staple when it comes to the plugin industry >Native Instruments is a staple when it comes to the plugin industry</li>
-                    <li><strong>Impact Soundworks</strong><br>Impact Soundworks has curated an incredible selection of instruments...</li>
-                    <!-- More items -->
-                </ul>
+            </div>
+
+            <button class="accordion-button">Orchestral Libraries</button>
+            <div class="accordion-content">
+                <h3>Free</h3>
+            </div>
+
+
+            <button class="accordion-button">Woodwind Section Libraries</button>
+            <div class="accordion-content">
+                <h3>Free</h3>
+            </div>
+
+
+            <button class="accordion-button">Brass Section Libraries</button>
+            <div class="accordion-content">
+                <h3>Free</h3>
+            </div>
+
+
+            <button class="accordion-button">String Section Libraries</button>
+            <div class="accordion-content">
+                <h3>Free</h3>
+            </div>
+
+
+            <button class="accordion-button">Percussion Section Libraries</button>
+            <div class="accordion-content">
+                <h3>Free</h3>
+            </div>
+
+
+            <button class="accordion-button">Synth Libraries</button>
+            <div class="accordion-content">
+                <h3>Free</h3>
             </div>
         </div>
 
