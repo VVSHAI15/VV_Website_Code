@@ -4,6 +4,7 @@
     <meta name="google-site-verification" content="adjlAe2QNaSQQLkP0JWYjo0SmqcQ_a83iQl1js7fOpM" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
     <title>Home - AviShai Dayanim | Composer for Media</title>
 
     <!-- SEO Meta Tags -->
@@ -30,7 +31,10 @@
 
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
+    <!-- Wavesurfer.js for Audio Playback -->
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+
     <!-- JavaScript to handle redirect on first visit -->
     <script>
         // Check if the user has already visited during this session
@@ -42,19 +46,26 @@
 <body>
     <!-- Header Section -->
     <header>
-        <div class="logo-container">
-            <a href="index.html">
-                <img src="Images/Logo.png" alt="Logo" id="header-logo">
-            </a>
-        </div>
-        <nav>
+        <div class="video-background">
+            <video autoplay loop muted playsinline class="video">
+                <source src="Images/Conducting Action Shot.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay">
+                <div class="logo-container">
+                    <a href="index.html">
+                        <img src="Images/Logo Variation-01.png" alt="Logo" id="header-logo">
+                    </a>
+                </div>
+            </div>
+        <!-- <nav>
             <ul>
                 <li><a href="index.html" class="active">HOME</a></li>
                 <li><a href="bio.html">BIO</a></li>
                 <li><a href="listen.html">LISTEN</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
-        </nav>
+        </nav> -->
         <div class="social-media">
             <a href="https://www.linkedin.com/in/avishai-dayanim-06025b224/" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://www.instagram.com/avishai_dayanim_music/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -63,20 +74,6 @@
             <a href="https://open.spotify.com/artist/0WIuOKyVoafEkbmljbOF1c?si=q0TtMmTNR5mLwD5PF_1KQQ&nd=1&dlsi=515583b57b0949b0" target="_blank"><i class="fab fa-spotify"></i></a>
         </div>
     </header>
-
-    <!-- Video Section -->
-    <section class="video-section">
-        <div class="video-background">
-            <video autoplay loop muted playsinline class="video">
-                <source src="Images/Conducting Action Shot.mov" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-overlay">
-                <h1>AviShai Dayanim</h1>
-                <p>Composer for Media</p>
-            </div>
-        </div>
-    </section>
 
     <!-- Credits Section -->
     <section class="credit_container">
@@ -103,6 +100,162 @@
         </div>
     </section>
 
+    <section class="bio-section">
+        <div class="bio-content">
+            <div class="bio-image">
+                <img src="./Images/BioPic.jpg" alt="AviShai Dayanim">
+            </div>
+            <div class="bio-text">
+                <h2>AviShai's Story...</h2>
+                <p>AviShai Dayanim is a composer, orchestrator, producer, and storyteller based in the Washington, D.C. and Baltimore, M.D. area. He is currently a junior Dual Degree student pursuing both a Bachelor of Music in Music for New Media and a Bachelor of Science in Computer Science from the Peabody Institute and the Johns Hopkins University.</p>
+                <p>From an early age, AviShai has been captivated by the power of music to tell stories and evoke deep emotions. He has composed scores for various forms of media, including short films, theater productions, and video games. His work has earned multiple awards at Film Festivals, most recently, for his work on the film "The Velvet Rose." AviShai’s love for storytelling through music also drives his innovative sound design, where he crafts unique virtual instruments that bring new dimensions to his compositions.</p>
+                <p>In May 2023, AviShai embarked on an exciting venture into virtual instrument creation, starting with an internship at Impact Soundworks LLC. This experience fueled his creativity and technical expertise, leading to his current role as the Studio Assistant for his major at Peabody, where he blends his dual passions for music and technology. AviShai has had the honor and privilege of working with renowned composers such as Mac Quayle and Michael Levine. </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="articles-section">
+        <h2>Recent News</h2>
+        <div class="articles-wrapper">
+            <div class="articles-content">
+                <article class="article">
+                    <h3><a href="https://boldjourney.com/meet-avishai-dayanim/" target="_blank">Meet AviShai Dayanim</a></h3>
+                    <p>Published by <em>Bold Journey</em> on April 9, 2024.</p>
+                </article>
+                <article class="article">
+                    <h3><a href="https://shoutoutla.com/meet-avishai-dayanim-composer-for-media/" target="_blank">Meet AviShai Dayanim | Composer for Media</a></h3>
+                    <p>Published in <em>ShoutOut LA</em> on January 29, 2024.</p>
+                </article>
+                <article class="article">
+                    <h3><a href="https://canvasrebel.com/meet-avishai-dayanim/">Meet AviShai Dayanim</a></h3>
+                    <p>Published by <em>Canvas Rebel</em> on October 9, 2024.</p>
+                </article>
+                <article class="article">
+                    <h3><a href="https://boldjourney.com/meet-avishai-dayanim/" target="_blank">Meet AviShai Dayanim</a></h3>
+                    <p>Published by <em>Bold Journey</em> on April 9, 2024.</p>
+                </article>
+                <article class="article">
+                    <h3><a href="https://shoutoutla.com/meet-avishai-dayanim-composer-for-media/" target="_blank">Meet AviShai Dayanim | Composer for Media</a></h3>
+                    <p>Published in <em>ShoutOut LA</em> on January 29, 2024.</p>
+                </article>
+                <article class="article">
+                    <h3><a href="https://canvasrebel.com/meet-avishai-dayanim/">Meet AviShai Dayanim</a></h3>
+                    <p>Published by <em>Canvas Rebel</em> on October 9, 2024.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="content">
+        <div class="playlist-section" id="hybrid-creations">
+            <h2 class="section-title">The Demo Reel</h2>
+            <div class="playlist-content">
+                <div class="album-info">
+                    <div class="track-details">
+                        <h3 class="track-title-large" id="hybrid-track-title">Sea of Gold</h3>
+                        <div class="audio-player" id="audio-player">
+                            <button id="play-pause-btn" class="play"><i class="fas fa-play"></i></button>
+                            <div id="waveform-hybrid"></div>
+                            <audio id="hybrid-audio" controls style="display:none;">
+                                <source id="hybrid-audio-source" src="Audio/Sea of Gold.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div class="track-list">
+                    <div class="track" data-src="Audio/Sea of Gold.mp3" data-title="Sea of Gold">
+                        <div class="track-info">
+                            <p class="track-title">Sea of Gold</p>
+                        </div>
+                        <p class="track-duration">1:23</p>
+                    </div>
+                    <div class="track" data-src="Audio/Gates of Hell.mp3" data-title="Gates of Hell">
+                        <div class="track-info">
+                            <p class="track-title">Gates of Hell</p>
+                        </div>
+                        <p class="track-duration">1:24</p>
+                    </div>
+                    <div class="track" data-src="Audio/SB_Theme.mp3" data-title="Sounds Like Adventure">
+                        <div class="track-info">
+                            <p class="track-title">Sounds Like Adventure</p>
+                        </div>
+                        <p class="track-duration">0:53</p>
+                    </div>
+                    <div class="track" data-src="Audio/SB_Boss.mp3" data-title="Doomsday Device">
+                        <div class="track-info">
+                            <p class="track-title">Doomsday Device</p>
+                        </div>
+                        <p class="track-duration">1:00</p>
+                    </div>
+                    <div class="track" data-src="Audio/The Hero.mp3" data-title="The Hero">
+                        <div class="track-info">
+                            <p class="track-title">The Hero</p>
+                        </div>
+                        <p class="track-duration">2:28</p>
+                    </div>
+                    <div class="track" data-src="Audio/Arrival.mp3" data-title="They Have Arrived">
+                        <div class="track-info">
+                            <p class="track-title">They Have Arrived</p>
+                        </div>
+                        <p class="track-duration">1:31</p>
+                    </div>
+                    <div class="track" data-src="Audio/TVR_The Dying Rose.mp3" data-title="The Dying Rose">
+                        <div class="track-info">
+                            <p class="track-title">The Dying Rose</p>
+                        </div>
+                        <p class="track-duration">2:17</p>
+                    </div>
+                    <div class="track" data-src="Audio/Final Frontier.mp3" data-title="Final Frontier">
+                        <div class="track-info">
+                            <p class="track-title">Final Frontier</p>
+                        </div>
+                        <p class="track-duration">2:35</p>
+                    </div>
+                    <div class="track" data-src="Audio/Where It All Started.mp3" data-title="Where It All Started">
+                        <div class="track-info">
+                            <p class="track-title">Where It All Started</p>
+                        </div>
+                        <p class="track-duration">2:28</p>
+                    </div>
+                    <div class="track" data-src="Audio/Deep Sleep.mp3" data-title="Deep Sleep">
+                        <div class="track-info">
+                            <p class="track-title">Deep Sleep</p>
+                        </div>
+                        <p class="track-duration">3:54</p>
+                    </div>
+                    <div class="track" data-src="Audio/The Knight.mp3" data-title="The Knight">
+                        <div class="track-info">
+                            <p class="track-title">The Knight</p>
+                        </div>
+                        <p class="track-duration">2:02</p>
+                    </div>
+                    <div class="track" data-src="Audio/Out of Time.mp3" data-title="Out Of Time">
+                        <div class="track-info">
+                            <p class="track-title">Out Of Time</p>
+                        </div>
+                        <p class="track-duration">4:10</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2>Let's Tell A Story, Together...</h2>
+        <form action ="https://api.web3forms.com/submit"method="POST" class="contact-form">
+            <input type="hidden" name="access_key" value="949dea64-3b9a-4bc0-8b66-20b0d5e9dbd3">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send</button>
+            <input type="hidden" name="redirect" value="https://vvshai15.github.io/VV_Website_Code/contact.html">
+        </form>
+    </section>
     <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 AviShai Dayanim. All rights reserved.</p>
@@ -111,6 +264,7 @@
     </footer>
 
     <!-- JavaScript for Audio Hover -->
+    <script src="scripts.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -150,5 +304,38 @@
             handleAudioHover('img5', 'audio5');
         });
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const articlesContainer = document.querySelector(".articles-content");
+            let articles = Array.from(articlesContainer.children);
+            let speed = 1; // Adjust speed if necessary
+            let moveAmount = 0;
+
+            function moveArticles() {
+                moveAmount -= speed;
+                articlesContainer.style.transform = `translateX(${moveAmount}px)`;
+
+                // Check if first article is out of view
+                let firstArticle = articles[0];
+                if (firstArticle.getBoundingClientRect().right < 0) {
+                    // Move first article to the end
+                    articlesContainer.appendChild(firstArticle);
+                    articles.push(articles.shift());
+
+                    // Reset transform to prevent drift
+                    moveAmount += firstArticle.offsetWidth + 40; // Adjust for gap
+                    articlesContainer.style.transform = `translateX(${moveAmount}px)`;
+                }
+
+                requestAnimationFrame(moveArticles);
+            }
+
+            moveArticles(); // Start animation
+        });ticles(); // Start animation loop
+
+    </script>
+
+    
 </body>
 </html>
