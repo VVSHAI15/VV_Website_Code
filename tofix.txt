@@ -1,0 +1,7 @@
+font
+credit stops when ontop
+logo resets homepage
+spotify link not working
+news articles stop when ontop
+make the entire news box the link, not just the title
+Play/Pause doesnt switch when switching through music (and send scroll back to start)
