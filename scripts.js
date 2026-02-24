@@ -41,33 +41,49 @@ function initNavScroll() {
 
 /* ============================================
    Mobile Nav — Hamburger Toggle
+   Overlay is appended to <body> directly so it
+   isn't trapped by backdrop-filter on the nav.
    ============================================ */
 function initMobileNav() {
     const hamburger = document.getElementById('nav-hamburger');
     const navLinks  = document.querySelector('.nav-links');
     if (!hamburger || !navLinks) return;
 
+    // Build a body-level overlay from the existing nav links
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-nav-overlay';
+
+    const ul = document.createElement('ul');
+    navLinks.querySelectorAll('a').forEach(original => {
+        const li = document.createElement('li');
+        const a  = document.createElement('a');
+        a.setAttribute('href', original.getAttribute('href'));
+        a.textContent = original.textContent;
+        if (original.classList.contains('active')) a.classList.add('active');
+        li.appendChild(a);
+        ul.appendChild(li);
+    });
+    overlay.appendChild(ul);
+    document.body.appendChild(overlay);
+
     const open  = () => {
-        navLinks.classList.add('nav-open');
+        overlay.classList.add('is-open');
         hamburger.classList.add('is-open');
         hamburger.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
     };
     const close = () => {
-        navLinks.classList.remove('nav-open');
+        overlay.classList.remove('is-open');
         hamburger.classList.remove('is-open');
         hamburger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
     };
 
     hamburger.addEventListener('click', () => {
-        navLinks.classList.contains('nav-open') ? close() : open();
+        overlay.classList.contains('is-open') ? close() : open();
     });
 
-    // Close on any link click
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
-
-    // Close on Escape
+    overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 }
 
@@ -318,6 +334,39 @@ function initWaveSurferPlayer() {
             ws.isPlaying() ? ws.pause() : ws.play();
         }
     });
+
+    // Fade out and pause when section leaves viewport
+    let fadeInterval = null;
+
+    const fadeOutAndPause = () => {
+        if (!ws.isPlaying()) return;
+        clearInterval(fadeInterval);
+        fadeInterval = setInterval(() => {
+            const vol = ws.getVolume();
+            if (vol > 0.06) {
+                ws.setVolume(Math.max(0, vol - 0.06));
+            } else {
+                clearInterval(fadeInterval);
+                ws.pause();
+                ws.setVolume(1);
+            }
+        }, 50);
+    };
+
+    const cancelFade = () => {
+        clearInterval(fadeInterval);
+        ws.setVolume(1);
+    };
+
+    new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                cancelFade();
+            } else {
+                fadeOutAndPause();
+            }
+        });
+    }, { threshold: 0.05 }).observe(section);
 }
 
 /* ============================================
