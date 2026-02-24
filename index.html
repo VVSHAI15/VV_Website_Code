@@ -1,333 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="adjlAe2QNaSQQLkP0JWYjo0SmqcQ_a83iQl1js7fOpM" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
-    <title>Home - AviShai Dayanim | Composer for Media</title>
+    <meta name="google-site-verification" content="adjlAe2QNaSQQLkP0JWYjo0SmqcQ_a83iQl1js7fOpM">
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="AviShai Dayanim is a composer, producer, orchestrator and storyteller. With a deep passion for media scoring, AviShai blends traditional orchestration with modern techniques to create evocative and hybrid soundscapes that elevate the narrative." />
-    <meta name="keywords" content="AviShai Dayanim, film composer, music composer, film scorer, cinematic music, media composer, film, music" />
-    <meta name="robots" content="index, follow" />
+    <title>Home — AviShai Dayanim | Composer for Media</title>
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="AviShai Dayanim | Composer for Media" />
-    <meta property="og:description" content="AviShai Dayanim is a composer, producer, orchestrator and storyteller. With a deep passion for media scoring, AviShai blends traditional orchestration with modern techniques to create evocative and hybrid soundscapes that elevate the narrative." />
-    <meta property="og:image" content="https://www.avishaidayanimmusic.com/Images/Logo.png" />
-    <meta property="og:url" content="https://www.avishaidayanimmusic.com/" />
-    <meta property="og:type" content="website" />
-
-
-    <link rel="canonical" href="https://www.avishaidayanimmusic.com" />
-
-
-     <!-- Favicon -->
-    <link rel="icon" href="Images/Logo Profile Photo-01.jpg" type="image/jpeg" />
-
-    <!-- Author Meta Tag -->
+    <meta name="description" content="AviShai Dayanim is a composer, producer, orchestrator and storyteller. With a deep passion for media scoring, AviShai blends traditional orchestration with modern techniques to create evocative and hybrid soundscapes that elevate the narrative.">
+    <meta name="keywords" content="AviShai Dayanim, film composer, music composer, film scorer, cinematic music, media composer, film, music">
+    <meta name="robots" content="index, follow">
     <meta name="author" content="AviShai Dayanim">
 
+    <meta property="og:title" content="AviShai Dayanim | Composer for Media">
+    <meta property="og:description" content="AviShai Dayanim is a composer, producer, orchestrator and storyteller.">
+    <meta property="og:image" content="https://www.avishaidayanimmusic.com/Images/Logo.png">
+    <meta property="og:url" content="https://www.avishaidayanimmusic.com/">
+    <meta property="og:type" content="website">
+
+    <link rel="canonical" href="https://www.avishaidayanimmusic.com/">
+    <link rel="icon" href="Images/Logo Profile Photo-01.jpg" type="image/jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <!-- Wavesurfer.js for Audio Playback -->
-    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js@7" defer></script>
+    <script src="scripts.js" defer></script>
 
-    <!-- JavaScript to handle redirect on first visit -->
     <script>
-        // Check if the user has already visited during this session
         if (!sessionStorage.getItem('visited')) {
             window.location.href = 'overlay.html';
         }
     </script>
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="video-background">
-            <video autoplay loop muted playsinline class="video">
+
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <ul class="nav-links">
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#bio">Bio</a></li>
+            <li><a href="#reel-section">Listen</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-social" aria-label="Social media links">
+            <a href="https://www.linkedin.com/in/avishai-dayanim-06025b224/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/avishai_dayanim_music/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/channel/UCWjfS8FvxOnzdil7Ar0jSJA" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.imdb.com/name/nm14757528/" target="_blank" rel="noopener noreferrer" aria-label="IMDB"><i class="fab fa-imdb"></i></a>
+            <a href="https://open.spotify.com/artist/0WIuOKyVoafEkbmljbOF1c" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+        </div>
+
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main>
+
+        <!-- ==================== HERO ==================== -->
+        <section class="hero" id="hero" aria-label="Hero">
+            <video class="hero-video" autoplay loop muted playsinline>
                 <source src="Images/Conducting Action Shot.mov" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
-            <div class="video-overlay">
-                <div class="logo-container">
-                    <a href="/">
-                        <img src="Images/Logo Variation-01.png" alt="Logo" id="header-logo">
+            <div class="hero-overlay" aria-hidden="true"></div>
+            <div class="hero-letterbox-top"  aria-hidden="true"></div>
+            <div class="hero-letterbox-bottom" aria-hidden="true"></div>
+
+            <div class="hero-content">
+                <span class="hero-eyebrow">Composer &middot; Orchestrator &middot; Storyteller</span>
+                <h1 class="hero-title">AviShai<br>Dayanim</h1>
+                <p class="hero-subtitle">Composer for Media</p>
+                <div class="hero-line" aria-hidden="true"></div>
+                <a href="#reel-section" class="hero-cta">Hear My Work</a>
+            </div>
+
+            <div class="hero-scroll-indicator" aria-hidden="true">
+                <span>Scroll</span>
+                <div class="hero-scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ==================== RECENT CREDITS ==================== -->
+        <section class="credits-section" aria-label="Recent Credits">
+            <div class="section-header reveal">
+                <span class="section-eyebrow">Filmography</span>
+                <h2 class="section-title">Recent Credits</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="credits-strip" aria-label="Scrolling film credits">
+                <div class="credits-track">
+                    <div class="credit-card" data-audio="Audio/SB_Theme.mp3" aria-label="Starboard — Original Score">
+                        <img src="Images/StarboardCredits.jpg" alt="Starboard">
+                        <div class="credit-card-overlay" aria-hidden="true">
+                            <span class="credit-title">Starboard</span>
+                            <span class="credit-role">Original Score</span>
+                        </div>
+                    </div>
+                    <div class="credit-card" data-audio="Audio/OneMoreTime.mp3" aria-label="One More Time — Original Score">
+                        <img src="Images/OneMoreTimeCredits.jpg" alt="One More Time">
+                        <div class="credit-card-overlay" aria-hidden="true">
+                            <span class="credit-title">One More Time</span>
+                            <span class="credit-role">Original Score</span>
+                        </div>
+                    </div>
+                    <div class="credit-card" data-audio="Audio/VelvetRose.mp3" aria-label="The Velvet Rose — Original Score">
+                        <img src="Images/VelvetCredits.jpg" alt="The Velvet Rose">
+                        <div class="credit-card-overlay" aria-hidden="true">
+                            <span class="credit-title">The Velvet Rose</span>
+                            <span class="credit-role">Original Score &mdash; Award Winner</span>
+                        </div>
+                    </div>
+                    <div class="credit-card" data-audio="Audio/wildman.mp3" aria-label="Wildman — Original Score">
+                        <img src="Images/WildmanCredits.jpg" alt="Wildman">
+                        <div class="credit-card-overlay" aria-hidden="true">
+                            <span class="credit-title">Wildman</span>
+                            <span class="credit-role">Original Score</span>
+                        </div>
+                    </div>
+                    <div class="credit-card" data-audio="Audio/Wheel.mp3" aria-label="Wheel of Fortune — Original Score">
+                        <img src="Images/WheelofFortune.jpg" alt="Wheel of Fortune">
+                        <div class="credit-card-overlay" aria-hidden="true">
+                            <span class="credit-title">Wheel of Fortune</span>
+                            <span class="credit-role">Original Score</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== ARTIST STATEMENT ==================== -->
+        <section class="quote-section" aria-label="Artist Statement">
+            <span class="quote-bg-glyph" aria-hidden="true">&ldquo;</span>
+            <blockquote>
+                <p class="quote-text reveal">
+                    Nothing excites me more than telling a story through music &mdash; the ability to take a listener through a fantastical adventure, a period of sorrow, a tale of love or the feeling of betrayal. I want to impact my listeners in the way I have been impacted throughout my life by music. I want to inspire future generations of musicians, composers, filmmakers, and storytellers. I want to be heard and listened to.
+                </p>
+                <span class="quote-attribution reveal reveal-delay-2">AviShai Dayanim</span>
+            </blockquote>
+        </section>
+
+        <!-- ==================== BIO ==================== -->
+        <section class="bio-section" id="bio" aria-label="Biography">
+            <div class="bio-grid">
+                <div class="bio-image-wrap reveal-left">
+                    <img src="Images/BioPic.jpg" alt="AviShai Dayanim conducting">
+                </div>
+                <div class="bio-text-content reveal-right">
+                    <span class="section-eyebrow">The Composer</span>
+                    <h2>AviShai's Story</h2>
+                    <p>AviShai Dayanim is a composer, orchestrator, producer, and storyteller based in the Washington, D.C. and Baltimore, M.D. area. He is currently a senior Dual Degree student pursuing both a Bachelor of Music in Music for New Media and a Bachelor of Science in Computer Science from the Peabody Institute and the Johns Hopkins University.</p>
+                    <p>From an early age, AviShai has been captivated by the power of music to tell stories and evoke deep emotions. He has composed scores for short films, theater productions, and video games — earning multiple awards at Film Festivals, most recently for his work on <em>The Velvet Rose.</em> His love for storytelling through music also drives his innovative sound design, crafting unique virtual instruments that bring new dimensions to his compositions.</p>
+                    <p>In May 2023, AviShai embarked on an exciting venture into virtual instrument creation through an internship at Impact Soundworks LLC. He has since had the honor of working alongside renowned composers including Michael Levine (<em>Megamind, The Simpsons Movie</em>), Mac Quayle (<em>Mr. Robot, American Horror Story</em>), and Henry Jackman (<em>Captain America, X-Men, Kingsman</em>).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== STATS ==================== -->
+        <section class="stats-section" aria-label="Achievements">
+            <div class="stats-grid container">
+                <div class="stat-item reveal">
+                    <span class="stat-number">9999+</span>
+                    <span class="stat-label">Ideas in Progress</span>
+                </div>
+                <div class="stat-item reveal reveal-delay-1">
+                    <span class="stat-number">12+</span>
+                    <span class="stat-label">Unique Credits</span>
+                </div>
+                <div class="stat-item reveal reveal-delay-2">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Festival Awards</span>
+                </div>
+                <div class="stat-item reveal reveal-delay-3">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Industry Mentors</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== NEWS & PRESS ==================== -->
+        <section class="articles-section" aria-label="News and Press">
+            <div class="section-header reveal">
+                <span class="section-eyebrow">Press</span>
+                <h2 class="section-title">Recent News</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="articles-marquee-wrap">
+                <div class="articles-marquee">
+                    <a href="https://boldjourney.com/meet-avishai-dayanim/" target="_blank" rel="noopener noreferrer" class="article-card">
+                        <h3>Meet AviShai Dayanim</h3>
+                        <p>Published by <em>Bold Journey</em> &mdash; April 9, 2024</p>
+                        <span class="card-arrow">Read Article</span>
+                    </a>
+                    <a href="https://shoutoutla.com/meet-avishai-dayanim-composer-for-media/" target="_blank" rel="noopener noreferrer" class="article-card">
+                        <h3>Meet AviShai Dayanim | Composer for Media</h3>
+                        <p>Published in <em>ShoutOut LA</em> &mdash; January 29, 2024</p>
+                        <span class="card-arrow">Read Article</span>
+                    </a>
+                    <a href="https://canvasrebel.com/meet-avishai-dayanim/" target="_blank" rel="noopener noreferrer" class="article-card">
+                        <h3>Meet AviShai Dayanim</h3>
+                        <p>Published by <em>Canvas Rebel</em> &mdash; October 9, 2024</p>
+                        <span class="card-arrow">Read Article</span>
                     </a>
                 </div>
             </div>
-        <div class="social-media">
-            <a href="https://www.linkedin.com/in/avishai-dayanim-06025b224/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/avishai_dayanim_music/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/channel/UCWjfS8FvxOnzdil7Ar0jSJA" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.imdb.com/name/nm14757528/" target="_blank"><i class="fab fa-imdb"></i></a>
-            <a href="https://open.spotify.com/artist/0WIuOKyVoafEkbmljbOF1c?si=q0TtMmTNR5mLwD5PF_1KQQ&nd=1&dlsi=515583b57b0949b0" target="_blank"><i class="fab fa-spotify"></i></a>
-        </div>
-    </header>
+        </section>
 
-    <!-- Credits Section -->
-    <section class="credit_container">
-        <audio id="audio1" src="Audio/SB_Theme.mp3"></audio>
-        <audio id="audio2" src="Audio/OneMoreTime.mp3"></audio>
-        <audio id="audio3" src="Audio/VelvetRose.mp3"></audio>
-        <audio id="audio4" src="Audio/wildman.mp3"></audio>
-        <audio id="audio5" src="Audio/Wheel.mp3"></audio>
+        <!-- ==================== DEMO REEL ==================== -->
+        <section class="reel-section" id="reel-section" aria-label="Demo Reel">
+            <div class="reel-inner">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">Selected Works</span>
+                    <h2 class="section-title">The Demo Reel</h2>
+                    <div class="section-line"></div>
+                </div>
 
-        <h2>Recent Credits</h2>
-        <div class="credits">
-            <img id="img1" src="Images/StarboardCredits.jpg" alt="Starboard Credits" />
-            <img id="img2" src="Images/OneMoreTimeCredits.jpg" alt="One More Time Credits" />
-            <img id="img3" src="Images/VelvetCredits.jpg" alt="Velvet Credits" />
-            <img id="img4" src="Images/WildmanCredits.jpg" alt="Wildman Credits" />
-            <img id="img5" src="Images/WheelofFortune.jpg" alt="WheelofFortune Credits" />
-        </div>
-    </section>
-    
-    <!-- Fade-in Text Section -->
-    <section class="fade-in-section">
-        <div class="fade-in-text-container">
-            <p class="fade-in-text">Nothing excites me more than telling a story through music -- the ability to take a listener through a fantastical adventure, a period of sorrow, a tale of love or the feeling of betrayal. I want to impact my listeners in the way I have been impacted throughout my life by music. I want to inspire future generations of musicians, composers, filmmakers, and storytellers. I want to be heard and listened to.</p>
-        </div>
-    </section>
-
-    <section class="bio-section">
-        <div class="bio-content">
-            <div class="bio-image">
-                <img src="./Images/BioPic.jpg" alt="AviShai Dayanim">
-            </div>
-            <div class="bio-text">
-                <h2>AviShai's Story...</h2>
-                <p>AviShai Dayanim is a composer, orchestrator, producer, and storyteller based in the Washington, D.C. and Baltimore, M.D. area. He is currently a junior Dual Degree student pursuing both a Bachelor of Music in Music for New Media and a Bachelor of Science in Computer Science from the Peabody Institute and the Johns Hopkins University.</p>
-                <p>From an early age, AviShai has been captivated by the power of music to tell stories and evoke deep emotions. He has composed scores for various forms of media, including short films, theater productions, and video games. His work has earned multiple awards at Film Festivals, most recently, for his work on the film "The Velvet Rose." AviShai’s love for storytelling through music also drives his innovative sound design, where he crafts unique virtual instruments that bring new dimensions to his compositions.</p>
-                <p>In May 2023, AviShai embarked on an exciting venture into virtual instrument creation, starting with an internship at Impact Soundworks LLC. This experience fueled his creativity and technical expertise, leading to his current role as the Studio Assistant for his major at Peabody, where he blends his dual passions for music and technology. AviShai has had the honor and privilege of working with renowned composers such as Michael Levine (Cold Cases, Megamind, Simpsons Movie), Mac Quayle (Mr. Robot, American Horror Story, The Last of Us: Part II), and Henry Jackman (Captain America, X-Men, Kingsmen). </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="articles-section">
-        <h2>Recent News</h2>
-        <div class="articles-wrapper">
-            <div class="articles-content">
-                <article class="article">
-                    <h3><a href="https://boldjourney.com/meet-avishai-dayanim/" target="_blank">Meet AviShai Dayanim</a></h3>
-                    <p>Published by <em>Bold Journey</em> on April 9, 2024.</p>
-                </article>
-                <article class="article">
-                    <h3><a href="https://shoutoutla.com/meet-avishai-dayanim-composer-for-media/" target="_blank">Meet AviShai Dayanim | Composer for Media</a></h3>
-                    <p>Published in <em>ShoutOut LA</em> on January 29, 2024.</p>
-                </article>
-                <article class="article">
-                    <h3><a href="https://canvasrebel.com/meet-avishai-dayanim/">Meet AviShai Dayanim</a></h3>
-                    <p>Published by <em>Canvas Rebel</em> on October 9, 2024.</p>
-                </article>
-                <article class="article">
-                    <h3><a href="https://boldjourney.com/meet-avishai-dayanim/" target="_blank">Meet AviShai Dayanim</a></h3>
-                    <p>Published by <em>Bold Journey</em> on April 9, 2024.</p>
-                </article>
-                <article class="article">
-                    <h3><a href="https://shoutoutla.com/meet-avishai-dayanim-composer-for-media/" target="_blank">Meet AviShai Dayanim | Composer for Media</a></h3>
-                    <p>Published in <em>ShoutOut LA</em> on January 29, 2024.</p>
-                </article>
-                <article class="article">
-                    <h3><a href="https://canvasrebel.com/meet-avishai-dayanim/">Meet AviShai Dayanim</a></h3>
-                    <p>Published by <em>Canvas Rebel</em> on October 9, 2024.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-    
-
-    <section class="content">
-        <div class="playlist-section" id="hybrid-creations">
-            <h2 class="section-title">The Demo Reel</h2>
-            <div class="playlist-content">
-                <div class="album-info">
-                    <div class="track-details">
-                        <h3 class="track-title-large" id="hybrid-track-title">Sea of Gold</h3>
-                        <div class="audio-player" id="audio-player">
-                            <button id="play-pause-btn" class="play"><i class="fas fa-play"></i></button>
-                            <div id="waveform-hybrid"></div>
-                            <audio id="hybrid-audio" controls style="display:none;">
-                                <source id="hybrid-audio-source" src="Audio/Sea of Gold.mp3" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
+                <div class="player-now-playing reveal reveal-delay-1" id="player-now-playing">
+                    <div class="now-playing-row">
+                        <span class="now-playing-label">Now Playing</span>
+                        <div class="equalizer" id="equalizer" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <h3 class="now-playing-title" id="now-playing-title">Sea of Gold</h3>
+                    <div class="player-controls">
+                        <button class="play-btn" id="play-pause-btn" aria-label="Play / Pause">
+                            <i class="fas fa-play" aria-hidden="true"></i>
+                        </button>
+                        <div class="waveform-wrap">
+                            <div id="waveform-hybrid" aria-label="Audio waveform"></div>
                         </div>
                     </div>
                 </div>
-                <div class="track-list">
-                    <div class="track" data-src="Audio/Sea of Gold.mp3" data-title="Sea of Gold">
-                        <div class="track-info">
-                            <p class="track-title">Sea of Gold</p>
-                        </div>
-                        <p class="track-duration">1:23</p>
-                    </div>
-                    <div class="track" data-src="Audio/Gates of Hell.mp3" data-title="Gates of Hell">
-                        <div class="track-info">
-                            <p class="track-title">Gates of Hell</p>
-                        </div>
-                        <p class="track-duration">1:24</p>
-                    </div>
-                    <div class="track" data-src="Audio/SB_Theme.mp3" data-title="Sounds Like Adventure">
-                        <div class="track-info">
-                            <p class="track-title">Sounds Like Adventure</p>
-                        </div>
-                        <p class="track-duration">0:53</p>
-                    </div>
-                    <div class="track" data-src="Audio/SB_Boss.mp3" data-title="Doomsday Device">
-                        <div class="track-info">
-                            <p class="track-title">Doomsday Device</p>
-                        </div>
-                        <p class="track-duration">1:00</p>
-                    </div>
-                    <div class="track" data-src="Audio/The Hero.mp3" data-title="The Hero">
-                        <div class="track-info">
-                            <p class="track-title">The Hero</p>
-                        </div>
-                        <p class="track-duration">2:28</p>
-                    </div>
-                    <div class="track" data-src="Audio/Arrival.mp3" data-title="They Have Arrived">
-                        <div class="track-info">
-                            <p class="track-title">They Have Arrived</p>
-                        </div>
-                        <p class="track-duration">1:31</p>
-                    </div>
-                    <div class="track" data-src="Audio/TVR_The Dying Rose.mp3" data-title="The Dying Rose">
-                        <div class="track-info">
-                            <p class="track-title">The Dying Rose</p>
-                        </div>
-                        <p class="track-duration">2:17</p>
-                    </div>
-                    <div class="track" data-src="Audio/Final Frontier.mp3" data-title="Final Frontier">
-                        <div class="track-info">
-                            <p class="track-title">Final Frontier</p>
-                        </div>
-                        <p class="track-duration">2:35</p>
-                    </div>
-                    <div class="track" data-src="Audio/Where It All Started.mp3" data-title="Where It All Started">
-                        <div class="track-info">
-                            <p class="track-title">Where It All Started</p>
-                        </div>
-                        <p class="track-duration">2:28</p>
-                    </div>
-                    <div class="track" data-src="Audio/Deep Sleep.mp3" data-title="Deep Sleep">
-                        <div class="track-info">
-                            <p class="track-title">Deep Sleep</p>
-                        </div>
-                        <p class="track-duration">3:54</p>
-                    </div>
-                    <div class="track" data-src="Audio/The Knight.mp3" data-title="The Knight">
-                        <div class="track-info">
-                            <p class="track-title">The Knight</p>
-                        </div>
-                        <p class="track-duration">2:02</p>
-                    </div>
-                    <div class="track" data-src="Audio/Out of Time.mp3" data-title="Out Of Time">
-                        <div class="track-info">
-                            <p class="track-title">Out Of Time</p>
-                        </div>
-                        <p class="track-duration">4:10</p>
-                    </div>
+
+                <div class="track-list reveal reveal-delay-2" role="list" aria-label="Track list">
+                    <div class="track-item" data-src="Audio/Sea of Gold.mp3"         data-title="Sea of Gold"         role="listitem" tabindex="0"><span class="track-item-title">Sea of Gold</span>         <span class="track-item-duration">1:23</span></div>
+                    <div class="track-item" data-src="Audio/Gates of Hell.mp3"        data-title="Gates of Hell"        role="listitem" tabindex="0"><span class="track-item-title">Gates of Hell</span>        <span class="track-item-duration">1:24</span></div>
+                    <div class="track-item" data-src="Audio/SB_Theme.mp3"             data-title="Sounds Like Adventure" role="listitem" tabindex="0"><span class="track-item-title">Sounds Like Adventure</span> <span class="track-item-duration">0:53</span></div>
+                    <div class="track-item" data-src="Audio/SB_Boss.mp3"              data-title="Doomsday Device"      role="listitem" tabindex="0"><span class="track-item-title">Doomsday Device</span>      <span class="track-item-duration">1:00</span></div>
+                    <div class="track-item" data-src="Audio/The Hero.mp3"             data-title="The Hero"             role="listitem" tabindex="0"><span class="track-item-title">The Hero</span>             <span class="track-item-duration">2:28</span></div>
+                    <div class="track-item" data-src="Audio/Arrival.mp3"              data-title="They Have Arrived"    role="listitem" tabindex="0"><span class="track-item-title">They Have Arrived</span>    <span class="track-item-duration">1:31</span></div>
+                    <div class="track-item" data-src="Audio/TVR_The Dying Rose.mp3"   data-title="The Dying Rose"       role="listitem" tabindex="0"><span class="track-item-title">The Dying Rose</span>       <span class="track-item-duration">2:17</span></div>
+                    <div class="track-item" data-src="Audio/Final Frontier.mp3"       data-title="Final Frontier"       role="listitem" tabindex="0"><span class="track-item-title">Final Frontier</span>       <span class="track-item-duration">2:35</span></div>
+                    <div class="track-item" data-src="Audio/Where It All Started.mp3" data-title="Where It All Started" role="listitem" tabindex="0"><span class="track-item-title">Where It All Started</span> <span class="track-item-duration">2:28</span></div>
+                    <div class="track-item" data-src="Audio/Deep Sleep.mp3"           data-title="Deep Sleep"           role="listitem" tabindex="0"><span class="track-item-title">Deep Sleep</span>           <span class="track-item-duration">3:54</span></div>
+                    <div class="track-item" data-src="Audio/The Knight.mp3"           data-title="The Knight"           role="listitem" tabindex="0"><span class="track-item-title">The Knight</span>           <span class="track-item-duration">2:02</span></div>
+                    <div class="track-item" data-src="Audio/Out of Time.mp3"          data-title="Out of Time"          role="listitem" tabindex="0"><span class="track-item-title">Out of Time</span>          <span class="track-item-duration">4:10</span></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="contact-section">
-        <h2>Let's Tell A Story, Together...</h2>
-        <form action ="https://api.web3forms.com/submit"method="POST" class="contact-form">
-            <input type="hidden" name="access_key" value="949dea64-3b9a-4bc0-8b66-20b0d5e9dbd3">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Send</button>
-            <input type="hidden" name="redirect" value="https://vvshai15.github.io/VV_Website_Code/contact.html">
-        </form>
-    </section>
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2024 AviShai Dayanim. All rights reserved.</p>
-        <p>www.avishaidayanimmusic.com</p>
-        <p>Website created by AviShai Dayanim</p>
+        <!-- ==================== CONTACT ==================== -->
+        <section class="contact-section" id="contact" aria-label="Contact">
+            <div class="contact-inner">
+                <div class="section-header reveal">
+                    <span class="section-eyebrow">Get in Touch</span>
+                    <h2 class="section-title">Let's Tell a Story,<br>Together</h2>
+                    <div class="section-line"></div>
+                </div>
+                <p class="contact-subtext reveal reveal-delay-1">Whether you have a project in mind or simply want to connect, I'd love to hear from you.</p>
+
+                <form action="https://api.web3forms.com/submit" method="POST" class="contact-form reveal reveal-delay-2">
+                    <input type="hidden" name="access_key" value="949dea64-3b9a-4bc0-8b66-20b0d5e9dbd3">
+                    <input type="hidden" name="redirect" value="https://www.avishaidayanimmusic.com/contact.html">
+
+                    <div class="form-field">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required autocomplete="email" placeholder="your@email.com">
+                    </div>
+                    <div class="form-field">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required rows="5" placeholder="Tell me about your project..."></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <a href="index.html" class="footer-logo" aria-label="Home">
+            <img src="Images/Main_Logo-01.png" alt="AviShai Dayanim">
+        </a>
+
+        <div class="footer-social" aria-label="Social media links">
+            <a href="https://www.linkedin.com/in/avishai-dayanim-06025b224/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/avishai_dayanim_music/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/channel/UCWjfS8FvxOnzdil7Ar0jSJA" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.imdb.com/name/nm14757528/" target="_blank" rel="noopener noreferrer" aria-label="IMDB"><i class="fab fa-imdb"></i></a>
+            <a href="https://open.spotify.com/artist/0WIuOKyVoafEkbmljbOF1c" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+        </div>
+
+        <p class="footer-copy">&copy; 2025 AviShai Dayanim &mdash; All Rights Reserved</p>
     </footer>
 
-    <!-- JavaScript for Audio Hover -->
-    <script src="scripts.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
-            function handleAudioHover(imgId, audioId) {
-                var img = document.getElementById(imgId);
-                var audio = document.getElementById(audioId);
-                var fadeOutInterval = null;
-
-                img.addEventListener('mouseover', function() {
-                    if (fadeOutInterval) {
-                        clearInterval(fadeOutInterval);
-                        fadeOutInterval = null;
-                    }
-                    audio.volume = 1.0;
-                    audio.play();
-                });
-
-                img.addEventListener('mouseout', function() {
-                    fadeOutInterval = setInterval(function() {
-                        if (audio.volume > 0.1) {
-                            audio.volume -= 0.1;
-                        } else {
-                            clearInterval(fadeOutInterval);
-                            audio.pause();
-                            audio.currentTime = 0;
-                            audio.volume = 1.0;
-                        }
-                    }, 100);
-                });
-            }
-
-            // Initialize audio hover effects
-            handleAudioHover('img1', 'audio1');
-            handleAudioHover('img2', 'audio2');
-            handleAudioHover('img3', 'audio3');
-            handleAudioHover('img4', 'audio4');
-            handleAudioHover('img5', 'audio5');
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const articlesContainer = document.querySelector(".articles-content");
-            let articles = Array.from(articlesContainer.children);
-            let speed = 1; // Adjust speed if necessary
-            let moveAmount = 0;
-
-            function moveArticles() {
-                moveAmount -= speed;
-                articlesContainer.style.transform = `translateX(${moveAmount}px)`;
-
-                // Check if first article is out of view
-                let firstArticle = articles[0];
-                if (firstArticle.getBoundingClientRect().right < 0) {
-                    // Move first article to the end
-                    articlesContainer.appendChild(firstArticle);
-                    articles.push(articles.shift());
-
-                    // Reset transform to prevent drift
-                    moveAmount += firstArticle.offsetWidth + 40; // Adjust for gap
-                    articlesContainer.style.transform = `translateX(${moveAmount}px)`;
-                }
-
-                requestAnimationFrame(moveArticles);
-            }
-
-            moveArticles(); // Start animation
-        });ticles(); // Start animation loop
-
-    </script>
-
-    
 </body>
 </html>
