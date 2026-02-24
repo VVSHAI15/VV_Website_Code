@@ -3,75 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bio - AviShai Dayanim</title>
+    <title>Bio — AviShai Dayanim | Composer for Media</title>
+
+    <meta name="description" content="AviShai Dayanim is a composer, orchestrator, producer, and storyteller based in Washington D.C. and Baltimore, MD.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="AviShai Dayanim">
+    <meta property="og:title" content="Bio — AviShai Dayanim | Composer for Media">
+    <meta property="og:image" content="https://www.avishaidayanimmusic.com/Images/Logo.png">
+    <meta property="og:url" content="https://www.avishaidayanimmusic.com/bio">
+    <meta property="og:type" content="website">
+    <meta name="google-site-verification" content="adjlAe2QNaSQQLkP0JWYjo0SmqcQ_a83iQl1js7fOpM">
+
+    <link rel="canonical" href="https://www.avishaidayanimmusic.com/bio">
+    <link rel="icon" href="Images/Logo Profile Photo-01.jpg" type="image/jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <script src="scripts.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <a href="index.html">
-                <img src="Images/Logo.png" alt="Logo">
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="bio.html" class="active">BIO</a></li>
-                <li><a href="listen.html">LISTEN</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
-            </ul>
-        </nav>
-        <div class="social-media">
-            <a href="https://www.linkedin.com/in/avishai-dayanim-06025b224/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/avishai_dayanim_music/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/channel/UCWjfS8FvxOnzdil7Ar0jSJA" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.imdb.com/name/nm14757528/" target="_blank"><i class="fab fa-imdb"></i></a>
-            <a href="https://open.spotify.com/artist/0WIuOKyVoafEkbmljbOF1c?si=q0TtMmTNR5mLwD5PF_1KQQ&nd=1&dlsi=515583b57b0949b0" target="_blank"><i class="fab fa-spotify"></i></a>
-        </div>
-    </header>
 
-    <section class="bio-section">
-        <div class="bio-content">
-            <div class="bio-image">
-                <img src="./Images/BioPic.jpg" alt="AviShai Dayanim">
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="bio.html" class="active">Bio</a></li>
+            <li><a href="listen.html">Listen</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-social" aria-label="Social media links">
+            <a href="https://www.linkedin.com/in/avishai-dayanim-06025b224/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/avishai_dayanim_music/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/channel/UCWjfS8FvxOnzdil7Ar0jSJA" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.imdb.com/name/nm14757528/" target="_blank" rel="noopener noreferrer" aria-label="IMDB"><i class="fab fa-imdb"></i></a>
+            <a href="https://open.spotify.com/artist/0WIuOKyVoafEkbmljbOF1c" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+        </div>
+
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main>
+
+        <!-- ==================== PAGE HEADER ==================== -->
+        <div class="page-hero">
+            <div class="page-hero-inner">
+                <span class="page-hero-eyebrow">The Composer</span>
+                <h1 class="page-hero-title">AviShai's Story</h1>
             </div>
-            <div class="bio-text">
-                <h2>AviShai's Story...</h2>
-                <p>AviShai Dayanim is a composer, orchestrator, producer, and storyteller based in the Washington, D.C. and Baltimore, M.D. area. He is currently a junior Dual Degree student pursuing both a Bachelor of Music in Music for New Media and a Bachelor of Science in Computer Science from the Peabody Institute and the Johns Hopkins University.</p>
-                <p>From an early age, AviShai has been captivated by the power of music to tell stories and evoke deep emotions. He has composed scores for various forms of media, including short films, theater productions, and video games. His work has earned multiple awards at Film Festivals, most recently, for his work on the film "The Velvet Rose." AviShai’s love for storytelling through music also drives his innovative sound design, where he crafts unique virtual instruments that bring new dimensions to his compositions.</p>
-                <p>In May 2023, AviShai embarked on an exciting venture into virtual instrument creation, starting with an internship at Impact Soundworks LLC. This experience fueled his creativity and technical expertise, leading to his current role as the Studio Assistant for his major at Peabody, where he blends his dual passions for music and technology. AviShai has had the honor and privilege of working with renowned composers such as Mac Quayle and Michael Levine. </p>
+        </div>
+
+        <!-- ==================== BIO CONTENT ==================== -->
+        <section class="bio-full-section" aria-label="Full biography">
+            <div class="bio-full-grid">
+                <div class="bio-image-wrap reveal-left">
+                    <img src="Images/BioPic.jpg" alt="AviShai Dayanim conducting">
+                </div>
+
+                <div class="bio-text-content reveal-right">
+                    <p>AviShai Dayanim is a composer, orchestrator, producer, and storyteller based in the Washington, D.C. and Baltimore, M.D. area. He is currently a junior Dual Degree student pursuing both a Bachelor of Music in Music for New Media and a Bachelor of Science in Computer Science from the Peabody Institute and the Johns Hopkins University.</p>
+
+                    <p>From an early age, AviShai has been captivated by the power of music to tell stories and evoke deep emotions. He has composed scores for various forms of media, including short films, theater productions, and video games. His work has earned multiple awards at Film Festivals, most recently, for his work on the film <em>The Velvet Rose.</em> AviShai's love for storytelling through music also drives his innovative sound design, where he crafts unique virtual instruments that bring new dimensions to his compositions.</p>
+
+                    <p>In May 2023, AviShai embarked on an exciting venture into virtual instrument creation, starting with an internship at Impact Soundworks LLC. This experience fueled his creativity and technical expertise, leading to his current role as the Studio Assistant for his major at Peabody, where he blends his dual passions for music and technology. AviShai has had the honor and privilege of working with renowned composers such as Michael Levine (<em>Cold Cases, Megamind, The Simpsons Movie</em>), Mac Quayle (<em>Mr. Robot, American Horror Story, The Last of Us: Part II</em>), and Henry Jackman (<em>Captain America, X-Men, Kingsman</em>).</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="articles-section">
-        <h2>Recent News</h2>
-        <div class="articles-content">
-            <article class="article">
-                <h3><a href="https://boldjourney.com/meet-avishai-dayanim/" target="_blank">Meet AviShai Dayanim</a></h3>
-                <p>Published by <em>Bold Journey</em> on April 9, 2024.</p>
-            </article>
-            <article class="article">
-                <h3><a href="https://shoutoutla.com/meet-avishai-dayanim-composer-for-media/" target="_blank">Meet AviShai Dayanim | Composer for Media</a></h3>
-                <p>Published in <em>ShoutOut LA</em> on January 29, 2024.</p>
-            </article>
-            <article class="article">
-                <h3><a href="buying-guide.html">Virtual Library Buying Guide</a></h3>
-                <p>Your comprehensive guide to selecting the best virtual libraries for film composers.</p>
-            </article>
-            <article class="article">
-                <h3><a href="https://canvasrebel.com/meet-avishai-dayanim/">Meet AviShai Dayanim</a></h3>
-                 <p>Published by <em>Canvas Rebel</em> on October 9, 2024.</p>
-            </article>
-        </div>
-    </section>
+        <!-- ==================== NEWS / PRESS ==================== -->
+        <section class="articles-section" aria-label="News and Press">
+            <div class="section-header reveal">
+                <span class="section-eyebrow">Press</span>
+                <h2 class="section-title">Recent News</h2>
+                <div class="section-line"></div>
+            </div>
 
-    <footer>
-        <p>&copy; 2024 AviShai Dayanim. All rights reserved.</p>
-        <p>www.avishaidayanimmusic.com</p>
-        <p>Website created by AviShai Dayanim</p>
+            <div class="articles-marquee-wrap">
+                <div class="articles-marquee">
+                    <a href="https://boldjourney.com/meet-avishai-dayanim/" target="_blank" rel="noopener noreferrer" class="article-card">
+                        <h3>Meet AviShai Dayanim</h3>
+                        <p>Published by <em>Bold Journey</em> &mdash; April 9, 2024</p>
+                        <span class="card-arrow">Read Article</span>
+                    </a>
+                    <a href="https://shoutoutla.com/meet-avishai-dayanim-composer-for-media/" target="_blank" rel="noopener noreferrer" class="article-card">
+                        <h3>Meet AviShai Dayanim | Composer for Media</h3>
+                        <p>Published in <em>ShoutOut LA</em> &mdash; January 29, 2024</p>
+                        <span class="card-arrow">Read Article</span>
+                    </a>
+                    <a href="https://canvasrebel.com/meet-avishai-dayanim/" target="_blank" rel="noopener noreferrer" class="article-card">
+                        <h3>Meet AviShai Dayanim</h3>
+                        <p>Published by <em>Canvas Rebel</em> &mdash; October 9, 2024</p>
+                        <span class="card-arrow">Read Article</span>
+                    </a>
+                    <a href="buying-guide.html" class="article-card">
+                        <h3>Virtual Library Buying Guide</h3>
+                        <p>Your comprehensive guide to selecting the best virtual libraries for film composers.</p>
+                        <span class="card-arrow">Read Guide</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <a href="index.html" class="footer-logo" aria-label="Home">
+            <img src="Images/Main_Logo-01.png" alt="AviShai Dayanim">
+        </a>
+
+        <div class="footer-social" aria-label="Social media links">
+            <a href="https://www.linkedin.com/in/avishai-dayanim-06025b224/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/avishai_dayanim_music/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/channel/UCWjfS8FvxOnzdil7Ar0jSJA" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.imdb.com/name/nm14757528/" target="_blank" rel="noopener noreferrer" aria-label="IMDB"><i class="fab fa-imdb"></i></a>
+            <a href="https://open.spotify.com/artist/0WIuOKyVoafEkbmljbOF1c" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+        </div>
+
+        <p class="footer-copy">&copy; 2025 AviShai Dayanim &mdash; All Rights Reserved</p>
     </footer>
 
 </body>
