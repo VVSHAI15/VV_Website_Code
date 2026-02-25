@@ -505,17 +505,80 @@ function initStatCounters() {
 }
 
 /* ============================================
-   Contact Forms — AJAX submit, spam protection
-   • Honeypot field (botcheck)
-   • Time gate: silently drops submissions < 3 s after page load
+   Contact Forms — AJAX submit + spam protection
+   • Honeypot (botcheck)
+   • Time gate: drops submissions < 3 s after page load
    • Rate limit: 60 s between submissions
-   • Math captcha: simple addition question
+   • Math captcha
+   • Disposable-domain blocklist
+   • AbstractAPI email validation (MX + deliverability)
    ============================================ */
+
+// Paste your free AbstractAPI key here:
+// Sign up at https://app.abstractapi.com/api/email-validation
+const EMAIL_VALIDATION_API_KEY = '1bc4a91d1ee143c3baa2949cd78dd1af';
+
+const DISPOSABLE_DOMAINS = new Set([
+    'mailinator.com','guerrillamail.com','guerrillamail.info','guerrillamail.net',
+    'guerrillamail.org','guerrillamail.de','guerrillamail.biz','spam4.me',
+    'trashmail.com','trashmail.me','trashmail.net','trashmail.at','trashmail.io',
+    'yopmail.com','yopmail.fr','cool.fr.nf','jetable.fr.nf','nospam.ze.tc',
+    'nomail.xl.cx','tempmail.com','temp-mail.org','tempmail.net','tempinbox.com',
+    'throwam.com','throwaway.email','dispostable.com','mailnull.com',
+    'sharklasers.com','grr.la','tempr.email','discard.email','mailnesia.com',
+    'maildrop.cc','10minutemail.com','10minutemail.net','10minutemail.org',
+    '10minutemail.us','burnermail.io','getnada.com','harakirimail.com',
+    'deadaddress.com','filzmail.com','kurzepost.de','mail-temporaire.fr',
+    'jetable.com','spamfree.eu','sofort-mail.de','emailondeck.com',
+    'fakeinbox.com','spamgourmet.com','spamgourmet.net','spamgourmet.org',
+    'mailforspam.com','obobbo.com','pookmail.com','spamthisplease.com',
+    'humaility.com','nowmymail.com','nomail.pw','objectmail.com','meltmail.com',
+    'mailin8r.com','spamspot.com','spammotel.com','spamfree24.org',
+    'getairmail.com','filzmail.de','wegwerfmail.de','wegwerfmail.net',
+    'wegwerfmail.org','trashdevil.com','trashdevil.de','mailexpire.com',
+    'spamgmail.com','tempemail.net','mytrashmail.com','throwam.com',
+    'spamevader.com','spamex.com','inboxclean.com','trashmail.at',
+]);
+
+async function validateEmail(email) {
+    const domain = email.split('@')[1]?.toLowerCase();
+    if (!domain) return { valid: false, reason: 'Please enter a valid email address.' };
+
+    // 1. Blocklist check — instant, no network needed
+    if (DISPOSABLE_DOMAINS.has(domain)) {
+        return { valid: false, reason: 'Disposable email addresses are not accepted.' };
+    }
+
+    // 2. AbstractAPI — checks MX records & deliverability
+    if (EMAIL_VALIDATION_API_KEY) {
+        try {
+            const res  = await fetch(
+                `https://emailvalidation.abstractapi.com/v1/?api_key=${EMAIL_VALIDATION_API_KEY}&email=${encodeURIComponent(email)}`
+            );
+            const data = await res.json();
+
+            if (data.is_disposable_email?.value) {
+                return { valid: false, reason: 'Disposable email addresses are not accepted.' };
+            }
+            if (data.is_mx_found?.value === false) {
+                return { valid: false, reason: 'That email domain does not exist.' };
+            }
+            if (data.deliverability === 'UNDELIVERABLE') {
+                return { valid: false, reason: 'That email address does not appear to be valid.' };
+            }
+        } catch {
+            // API unreachable — allow submission rather than block a real user
+        }
+    }
+
+    return { valid: true };
+}
+
 function initContactForms() {
     document.querySelectorAll('.contact-form').forEach(form => {
         const loadTime = Date.now();
         let lastSubmitTime = 0;
-        let captchaAnswer = 0;
+        let captchaAnswer  = 0;
 
         const captchaInput    = form.querySelector('.captcha-input');
         const captchaQuestion = form.querySelector('.captcha-question');
@@ -532,14 +595,14 @@ function initContactForms() {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Honeypot — bots check this, humans don't
+            // Honeypot
             const botcheck = form.querySelector('[name="botcheck"]');
             if (botcheck && botcheck.checked) return;
 
-            // Time gate — bots submit instantly
+            // Time gate
             if (Date.now() - loadTime < 3000) return;
 
-            // Rate limit — one message per 60 s
+            // Rate limit
             if (lastSubmitTime && Date.now() - lastSubmitTime < 60000) {
                 showFormMessage(form, 'Please wait a moment before sending again.', 'error');
                 return;
@@ -557,10 +620,22 @@ function initContactForms() {
 
             const submitBtn = form.querySelector('[type="submit"]');
             const origLabel = submitBtn ? submitBtn.textContent : '';
-            if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
 
-            // captcha input has no name attr so it is excluded from FormData automatically
-            const payload = new FormData(form);
+            // Email validation (may hit the API)
+            if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Verifying…'; }
+            const emailInput = form.querySelector('[name="email"]');
+            if (emailInput) {
+                const check = await validateEmail(emailInput.value.trim());
+                if (!check.valid) {
+                    showFormMessage(form, check.reason, 'error');
+                    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = origLabel; }
+                    return;
+                }
+            }
+
+            // Submit
+            if (submitBtn) submitBtn.textContent = 'Sending…';
+            const payload = new FormData(form); // captcha input has no name, so it's excluded
 
             try {
                 const res  = await fetch('https://api.web3forms.com/submit', {
