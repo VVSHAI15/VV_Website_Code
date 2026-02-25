@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initArticlesMarquee();
     initWaveSurferPlayer();
     initCreditAudioHover();
+    initContactForms();
 });
 
 /* ============================================
@@ -89,7 +90,9 @@ function initMobileNav() {
 
 /* ============================================
    Nav — Active Section Tracking
-   Highlights the correct nav link as you scroll
+   Highlights the correct nav link as you scroll.
+   Uses scroll position so tall sections (reel, contact)
+   are detected reliably regardless of height.
    ============================================ */
 function initNavActiveSection() {
     const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
@@ -103,17 +106,24 @@ function initNavActiveSection() {
     });
     if (!sections.length) return;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                navLinks.forEach(l => l.classList.remove('active'));
-                const match = sections.find(s => s.el === entry.target);
-                if (match) match.link.classList.add('active');
-            }
-        });
-    }, { threshold: 0.25, rootMargin: '-8% 0px -60% 0px' });
+    const update = () => {
+        // The "active" section is the last one whose top edge is above
+        // 35% down the viewport — so scrolling into a section activates it.
+        const trigger = window.scrollY + window.innerHeight * 0.35;
 
-    sections.forEach(s => observer.observe(s.el));
+        let active = sections[0];
+        for (const s of sections) {
+            if (s.el.getBoundingClientRect().top + window.scrollY <= trigger) {
+                active = s;
+            }
+        }
+
+        navLinks.forEach(l => l.classList.remove('active'));
+        active.link.classList.add('active');
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
 }
 
 /* ============================================
@@ -492,6 +502,99 @@ function initStatCounters() {
     }, { threshold: 0.5 });
 
     statEls.forEach(el => observer.observe(el));
+}
+
+/* ============================================
+   Contact Forms — AJAX submit, spam protection
+   • Honeypot field (botcheck)
+   • Time gate: silently drops submissions < 3 s after page load
+   • Rate limit: 60 s between submissions
+   • Math captcha: simple addition question
+   ============================================ */
+function initContactForms() {
+    document.querySelectorAll('.contact-form').forEach(form => {
+        const loadTime = Date.now();
+        let lastSubmitTime = 0;
+        let captchaAnswer = 0;
+
+        const captchaInput    = form.querySelector('.captcha-input');
+        const captchaQuestion = form.querySelector('.captcha-question');
+
+        const refreshCaptcha = () => {
+            const a = Math.floor(Math.random() * 9) + 1;
+            const b = Math.floor(Math.random() * 9) + 1;
+            captchaAnswer = a + b;
+            if (captchaQuestion) captchaQuestion.textContent = a + ' + ' + b;
+            if (captchaInput)    captchaInput.value = '';
+        };
+        refreshCaptcha();
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Honeypot — bots check this, humans don't
+            const botcheck = form.querySelector('[name="botcheck"]');
+            if (botcheck && botcheck.checked) return;
+
+            // Time gate — bots submit instantly
+            if (Date.now() - loadTime < 3000) return;
+
+            // Rate limit — one message per 60 s
+            if (lastSubmitTime && Date.now() - lastSubmitTime < 60000) {
+                showFormMessage(form, 'Please wait a moment before sending again.', 'error');
+                return;
+            }
+
+            // Math captcha
+            if (captchaInput) {
+                const given = parseInt(captchaInput.value.trim(), 10);
+                if (isNaN(given) || given !== captchaAnswer) {
+                    showFormMessage(form, 'Incorrect answer — please try again.', 'error');
+                    refreshCaptcha();
+                    return;
+                }
+            }
+
+            const submitBtn = form.querySelector('[type="submit"]');
+            const origLabel = submitBtn ? submitBtn.textContent : '';
+            if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+            // captcha input has no name attr so it is excluded from FormData automatically
+            const payload = new FormData(form);
+
+            try {
+                const res  = await fetch('https://api.web3forms.com/submit', {
+                    method:  'POST',
+                    headers: { Accept: 'application/json' },
+                    body:    payload,
+                });
+                const json = await res.json();
+
+                if (json.success) {
+                    lastSubmitTime = Date.now();
+                    showFormMessage(form, "Message sent! I'll be in touch soon.", 'success');
+                    form.reset();
+                    refreshCaptcha();
+                } else {
+                    showFormMessage(form, 'Something went wrong. Please try again.', 'error');
+                }
+            } catch {
+                showFormMessage(form, 'Something went wrong. Please try again.', 'error');
+            } finally {
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = origLabel; }
+            }
+        });
+    });
+}
+
+function showFormMessage(form, text, type) {
+    let msg = form.querySelector('.form-message');
+    if (!msg) {
+        msg = document.createElement('p');
+        form.appendChild(msg);
+    }
+    msg.textContent = text;
+    msg.className   = 'form-message form-message--' + type;
 }
 
 /* ============================================
