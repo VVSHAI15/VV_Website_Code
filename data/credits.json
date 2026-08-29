@@ -1,0 +1,9 @@
+[
+  { "title": "The Velvet Rose", "role": "Original Score", "year": "", "award": "Festival Award Winner", "image": "Images/credits/velvet.jpg" },
+  { "title": "Wildman",         "role": "Original Score", "year": "", "award": "", "image": "Images/credits/wildman.jpg" },
+  { "title": "Starboard",       "role": "Original Score", "year": "", "award": "", "image": "Images/credits/starboard.jpg" },
+  { "title": "One More Time",   "role": "Original Score", "year": "", "award": "", "image": "Images/credits/onemoretime.jpg" },
+  { "title": "Wheel of Fortune","role": "Original Score", "year": "", "award": "", "image": "Images/credits/wheel.jpg" },
+  { "title": "The Farm",        "role": "Composer",       "year": "", "award": "", "image": "Images/credits/farm.jpg" },
+  { "title": "Outbreak",        "role": "Composer's Assistant", "year": "", "award": "", "image": "Images/credits/outbreak.jpg" }
+]
