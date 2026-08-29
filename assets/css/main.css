@@ -1,0 +1,285 @@
+/* ============================================================
+   Scoring Stage — base + shell (Chunk 1: nav, hero, footer)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: var(--fs-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.005em;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font: inherit; color: inherit; border: none; background: none; }
+ul { list-style: none; }
+::selection { background: var(--amber-dim); color: var(--amber-bright); }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.02; letter-spacing: -0.01em; }
+
+/* Mono spec / eyebrow label — the technologist thread */
+.label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+.label--amber { color: var(--amber); }
+
+.container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 3rem); }
+
+/* Skip link (a11y) */
+.skip-link {
+    position: absolute; left: 1rem; top: -3rem; z-index: 2000;
+    background: var(--amber); color: #1a1206; padding: 0.5rem 1rem; border-radius: var(--radius);
+    font-family: var(--font-mono); font-size: var(--fs-small); transition: top var(--t-fast);
+}
+.skip-link:focus { top: 1rem; }
+
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 2px; }
+
+/* ============================================================
+   Navigation — minimal, fixed, transparent → hairline on scroll
+   ============================================================ */
+.nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 1000;
+    height: var(--nav-h);
+    display: flex; align-items: center; justify-content: space-between;
+    padding-inline: clamp(1.25rem, 5vw, 3rem);
+    transition: background var(--t), border-color var(--t), height var(--t);
+    border-bottom: 1px solid transparent;
+}
+.nav.is-scrolled {
+    height: 62px;
+    background: rgba(11, 11, 13, 0.82);
+    backdrop-filter: blur(16px) saturate(1.1);
+    -webkit-backdrop-filter: blur(16px) saturate(1.1);
+    border-bottom-color: var(--line);
+}
+.nav__brand {
+    font-family: var(--font-display);
+    font-size: 1.15rem; letter-spacing: 0.01em;
+    display: flex; align-items: baseline; gap: 0.55rem;
+}
+.nav__brand .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); display: inline-block; transform: translateY(-2px); }
+.nav__links { display: flex; gap: clamp(1.5rem, 3vw, 2.75rem); align-items: center; }
+.nav__links a {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label); letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-dim); transition: color var(--t-fast); position: relative; padding-block: 4px;
+}
+.nav__links a::after {
+    content: ''; position: absolute; left: 0; bottom: 0; height: 1px; width: 0; background: var(--amber); transition: width var(--t);
+}
+.nav__links a:hover, .nav__links a.is-active { color: var(--text); }
+.nav__links a:hover::after, .nav__links a.is-active::after { width: 100%; }
+
+.nav__toggle { display: none; }
+
+/* ============================================================
+   Hero — big type + audio-reactive waveform as the art
+   ============================================================ */
+.hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-block: calc(var(--nav-h) + var(--sp-4)) var(--sp-4);
+    overflow: hidden;
+}
+.hero__inner { position: relative; z-index: 2; width: 100%; }
+
+/* Cue-sheet mark row — hairline-ruled metadata above the name */
+.hero__marks {
+    display: flex; justify-content: space-between; gap: 1rem;
+    font-family: var(--font-mono); font-size: var(--fs-label); letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-faint);
+    padding-bottom: 0.9rem; margin-bottom: var(--sp-4);
+    border-bottom: 1px solid var(--line);
+}
+
+.hero__title {
+    font-size: var(--fs-display);
+    line-height: 0.88;
+    letter-spacing: -0.035em;
+    font-weight: 460;
+    margin-bottom: var(--sp-3);
+    text-indent: -0.04em;            /* optical: pull the cap off the margin */
+}
+.hero__title em { font-style: italic; font-weight: 340; color: var(--amber); }
+
+.hero__sub {
+    font-family: var(--font-display);
+    font-size: var(--fs-lead); color: var(--text-dim); max-width: 30ch; margin-bottom: var(--sp-4);
+    font-weight: 340; font-style: italic;
+}
+.hero__actions { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-4); align-items: center; }
+
+/* Foot row under the waveform — completes the document frame */
+.hero__foot {
+    position: relative; z-index: 2;
+    display: flex; justify-content: space-between; gap: 1rem;
+    margin-top: var(--sp-3); padding-top: 0.9rem; border-top: 1px solid var(--line);
+    font-family: var(--font-mono); font-size: var(--fs-label); letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-faint);
+}
+.hero__foot-scroll { color: var(--text-dim); }
+
+/* Primary amber "play" button */
+.btn-play {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: var(--amber); color: #1a1206;
+    font-family: var(--font-mono); font-size: var(--fs-small); letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.9rem 1.6rem; border-radius: var(--radius);
+    transition: transform var(--t-fast), background var(--t-fast), box-shadow var(--t);
+    box-shadow: 0 0 0 0 var(--amber-dim);
+}
+.btn-play:hover { background: var(--amber-bright); }
+.btn-play .tri { width: 0; height: 0; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent #1a1206; }
+
+.btn-ghost {
+    font-family: var(--font-mono); font-size: var(--fs-small); letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-dim); padding: 0.9rem 0.25rem; transition: color var(--t-fast);
+}
+.btn-ghost:hover { color: var(--text); }
+
+/* Waveform motif (SVG) sitting under the hero copy */
+.hero__wave { position: relative; z-index: 1; margin-top: var(--sp-4); width: 100%; height: 80px; }
+.hero__wave svg { width: 100%; height: 100%; display: block; }
+.hero__wave .bar { transform-box: fill-box; transform-origin: center; animation: wave 1.8s var(--ease) infinite; }
+
+@keyframes wave {
+    0%, 100% { transform: scaleY(0.28); opacity: 0.42; }
+    50%      { transform: scaleY(0.9);  opacity: 0.85; }
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer {
+    border-top: 1px solid var(--line);
+    padding-block: var(--sp-5) var(--sp-4);
+    display: flex; flex-direction: column; align-items: center; gap: var(--sp-3); text-align: center;
+}
+.footer__brand { font-family: var(--font-display); font-size: 1.4rem; }
+.footer__social { display: flex; gap: var(--sp-3); }
+.footer__social a { color: var(--text-faint); font-family: var(--font-mono); font-size: var(--fs-label); letter-spacing: 0.15em; text-transform: uppercase; transition: color var(--t-fast); }
+.footer__social a:hover { color: var(--amber); }
+.footer__copy { font-family: var(--font-mono); font-size: var(--fs-label); color: var(--text-faint); letter-spacing: 0.1em; }
+
+/* ============================================================
+   Docked persistent player
+   ============================================================ */
+body.has-player { padding-bottom: var(--player-h); }
+
+.player {
+    position: fixed; inset: auto 0 0 0; z-index: 1200;
+    background: rgba(19, 19, 23, 0.86);
+    backdrop-filter: blur(20px) saturate(1.15);
+    -webkit-backdrop-filter: blur(20px) saturate(1.15);
+    border-top: 1px solid var(--amber-line);
+    transform: translateY(110%);
+    transition: transform var(--t-slow);
+    will-change: transform;
+}
+.player.is-visible { transform: translateY(0); }
+
+.player__inner {
+    max-width: var(--maxw); margin-inline: auto;
+    min-height: var(--player-h);
+    display: flex; align-items: center; gap: clamp(0.75rem, 2vw, 1.5rem);
+    padding: 0.75rem clamp(1rem, 4vw, 2rem);
+}
+
+/* Play / pause toggle — amber disc */
+.player__toggle {
+    flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%;
+    background: var(--amber); color: #1a1206;
+    display: grid; place-items: center;
+    transition: transform var(--t-fast), background var(--t-fast);
+}
+.player__toggle:hover { background: var(--amber-bright); transform: scale(1.06); }
+.player__toggle .ico-play { width: 0; height: 0; border-style: solid; border-width: 7px 0 7px 12px; border-color: transparent transparent transparent #1a1206; margin-left: 3px; }
+.player__toggle .ico-pause { display: none; width: 12px; height: 13px; border-left: 4px solid #1a1206; border-right: 4px solid #1a1206; }
+.player[data-state="playing"] .ico-play { display: none; }
+.player[data-state="playing"] .ico-pause { display: block; }
+
+.player__meta { flex: 0 1 190px; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.player__title { font-family: var(--font-display); font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player__project { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player__project:empty { display: none; }
+
+/* Scrubber */
+.player__scrub { flex: 1 1 auto; display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+.player__time { font-family: var(--font-mono); font-size: var(--fs-label); color: var(--text-faint); flex: 0 0 auto; font-variant-numeric: tabular-nums; }
+.player__track { position: relative; flex: 1 1 auto; height: 4px; border-radius: 4px; background: var(--line-strong); cursor: pointer; }
+.player__track:hover { height: 6px; }
+.player__fill { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--amber); border-radius: 4px; }
+.player__knob { position: absolute; top: 50%; left: 0; width: 11px; height: 11px; border-radius: 50%; background: var(--amber-bright); transform: translate(-50%, -50%) scale(0); transition: transform var(--t-fast); box-shadow: 0 0 10px var(--amber-dim); }
+.player__track:hover .player__knob, .player__track:focus-visible .player__knob { transform: translate(-50%, -50%) scale(1); }
+
+.player__nav { flex: 0 0 auto; display: flex; gap: 0.25rem; }
+.player__step { width: 34px; height: 34px; border-radius: 50%; font-size: 1.4rem; line-height: 1; color: var(--text-dim); transition: color var(--t-fast), background var(--t-fast); }
+.player__step:hover { color: var(--text); background: var(--bg-raised-2); }
+
+.player__close { flex: 0 0 auto; width: 30px; height: 30px; color: var(--text-faint); font-size: 1.3rem; line-height: 1; transition: color var(--t-fast); }
+.player__close:hover { color: var(--text); }
+
+@media (max-width: 640px) {
+    .player__meta { flex-basis: auto; }
+    .player__time--dur, .player__nav, .player__close { display: none; }
+    .player__inner { gap: 0.75rem; padding-inline: 1rem; }
+}
+
+/* Hero wave goes live (JS-driven) — pause the idle CSS animation */
+.hero__wave.is-live .bar { animation: none; }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 720px) {
+    .nav__links { display: none; }
+    .nav__toggle {
+        display: flex; flex-direction: column; gap: 5px; padding: 8px; width: 40px; height: 40px; align-items: center; justify-content: center;
+    }
+    .nav__toggle span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: transform var(--t), opacity var(--t); }
+    .nav__toggle.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav__toggle.is-open span:nth-child(2) { opacity: 0; }
+    .nav__toggle.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .hero { min-height: 92svh; }
+}
+
+/* Mobile menu overlay (built in JS, appended to body) */
+.mobile-menu {
+    position: fixed; inset: 0; z-index: 1100;
+    background: rgba(11, 11, 13, 0.97);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--sp-3);
+    opacity: 0; visibility: hidden; transition: opacity var(--t), visibility var(--t);
+}
+.mobile-menu.is-open { opacity: 1; visibility: visible; }
+.mobile-menu a {
+    font-family: var(--font-display); font-size: clamp(2rem, 9vw, 3rem); color: var(--text-dim);
+    transition: color var(--t-fast);
+}
+.mobile-menu a:hover, .mobile-menu a:active { color: var(--amber); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero__wave .bar { animation: none; transform: scaleY(0.7); }
+    *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
