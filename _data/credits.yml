@@ -1,37 +1,29 @@
-# Credits marquee. "audio" is the cue previewed on hover/tap — leave it
-# blank for no preview.
 cards:
   - title: Starboard
     role: Original Score
     image: Images/StarboardCredits.jpg
     audio: Audio/SB_Theme.mp3
-
   - title: One More Time
     role: Original Score
     image: Images/OneMoreTimeCredits.jpg
     audio: Audio/OneMoreTime.mp3
-
   - title: The Velvet Rose
     role: Original Score — Award Winner
     image: Images/VelvetCredits.jpg
     audio: Audio/VelvetRose.mp3
-
   - title: Wildman
     role: Original Score
     image: Images/WildmanCredits.jpg
     audio: Audio/wildman.mp3
-
   - title: Wheel of Fortune
     role: Original Score
     image: Images/WheelofFortune.jpg
     audio: Audio/Wheel.mp3
-
   - title: Outbreak
     role: Assistant to Composer
     image: Images/Outbreak.jpg
-    audio:
-
+    audio: null
   - title: The Farm
     role: Original Score
     image: Images/The Farm.jpg
-    audio:
+    audio: /Audio/TheFarmTheme.mp3
