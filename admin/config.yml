@@ -16,8 +16,10 @@ media_folder: "Images"
 public_folder: "/Images"
 
 # Uploads land beside the existing artwork rather than in a new folder.
-media_library:
-  max_file_size: 10485760   # 10 MB
+media_libraries:
+  default:
+    config:
+      max_file_size: 10485760   # 10 MB
 
 collections:
   - name: reel
