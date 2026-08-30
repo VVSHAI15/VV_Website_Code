@@ -36,6 +36,19 @@ on disk; the site rebuilds as you save. Commit and push when you're happy.
 Requires a Chromium-based browser (Chrome or Edge) — the local mode uses
 the File System Access API, which Safari and Firefox don't support.
 
+### Seeing a change before you push it
+
+GitHub is what actually builds the site, but you can render the page
+locally to check a content edit first — no Ruby required:
+
+```
+uv run --with python-liquid --with markdown --with pyyaml tools/preview.py
+```
+
+That writes `preview.html` (gitignored) beside the real images and audio,
+so the intro overlay, the player and the credit-card previews all behave
+as they will live. Open it directly in a browser.
+
 **Live, from anywhere:** editing at `avishaidayanimmusic.com/admin/`
 needs a GitHub OAuth helper, because GitHub's API won't accept a login
 from a static page on its own. The usual setup is the
