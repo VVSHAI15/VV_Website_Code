@@ -1,0 +1,105 @@
+# Sveltia CMS — edits the YAML in _data/, which Jekyll renders into the page.
+#
+# Local editing (no GitHub login, nothing pushed):
+#   bundle exec jekyll serve
+#   open http://localhost:4000/admin/  and choose "Work with Local Repository"
+#
+# Editing live at avishaidayanimmusic.com/admin/ needs a GitHub OAuth
+# helper — see README. Until then, local mode is the way in.
+
+backend:
+  name: github
+  repo: VVSHAI15/VV_Website_Code
+  branch: main
+
+media_folder: "Images"
+public_folder: "/Images"
+
+# Uploads land beside the existing artwork rather than in a new folder.
+media_library:
+  max_file_size: 10485760   # 10 MB
+
+collections:
+  - name: reel
+    label: Demo Reel
+    files:
+      - name: tracks
+        label: Tracks
+        file: _data/reel.yml
+        description: >-
+          The player's track list, grouped by genre. Drag to reorder —
+          the first track of the first group is what loads on page open.
+        fields:
+          - label: Genre Groups
+            name: groups
+            widget: list
+            label_singular: Genre Group
+            summary: "{{fields.genre}}"
+            fields:
+              - { label: Genre, name: genre, widget: string }
+              - label: Tracks
+                name: tracks
+                widget: list
+                label_singular: Track
+                summary: "{{fields.title}} — {{fields.duration}}"
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Audio File, name: file, widget: file, media_folder: "/Audio", public_folder: "/Audio" }
+                  - { label: Duration, name: duration, widget: string, hint: "As it should read on the page, e.g. 1:24" }
+
+  - name: credits
+    label: Credits
+    files:
+      - name: cards
+        label: Credit Cards
+        file: _data/credits.yml
+        description: The scrolling filmography strip. Drag to reorder.
+        fields:
+          - label: Credits
+            name: cards
+            widget: list
+            label_singular: Credit
+            summary: "{{fields.title}} — {{fields.role}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Role, name: role, widget: string, hint: "e.g. Original Score, Assistant to Composer" }
+              - { label: Artwork, name: image, widget: image }
+              - { label: Hover Cue, name: audio, widget: file, required: false, media_folder: "/Audio", public_folder: "/Audio", hint: "Plays on hover (desktop) or tap (mobile). Leave empty for none." }
+
+  - name: press
+    label: Press
+    files:
+      - name: articles
+        label: Articles
+        file: _data/press.yml
+        description: The "Recent News" strip.
+        fields:
+          - label: Articles
+            name: articles
+            widget: list
+            label_singular: Article
+            summary: "{{fields.title}} — {{fields.publication}}"
+            fields:
+              - { label: Headline, name: title, widget: string }
+              - { label: Publication, name: publication, widget: string }
+              - label: Wording
+                name: preposition
+                widget: select
+                options: ["by", "in"]
+                default: "by"
+                hint: 'Reads as "Published by Bold Journey" or "Published in ShoutOut LA"'
+              - { label: Date, name: date, widget: string, hint: "e.g. April 9, 2024" }
+              - { label: Link, name: url, widget: string }
+
+  - name: bio
+    label: Bio
+    files:
+      - name: bio
+        label: Bio Section
+        file: _data/bio.yml
+        fields:
+          - { label: Eyebrow, name: eyebrow, widget: string, hint: "Small gold text above the heading" }
+          - { label: Heading, name: heading, widget: string }
+          - { label: Photo, name: image, widget: image }
+          - { label: Photo Alt Text, name: image_alt, widget: string }
+          - { label: Body, name: body, widget: markdown, hint: "Each paragraph becomes its own block on the page." }

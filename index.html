@@ -1,3 +1,6 @@
+---
+# Rendered by Jekyll. Content comes from _data/*.yml — edit it at /admin/.
+---
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -117,55 +120,15 @@
 
             <div class="credits-strip" aria-label="Scrolling film credits">
                 <div class="credits-track">
-                    <div class="credit-card" data-audio="Audio/SB_Theme.mp3" aria-label="Starboard — Original Score">
-                        <img src="Images/StarboardCredits.jpg" alt="Starboard">
+                    {%- for credit in site.data.credits.cards %}
+                    <div class="credit-card"{% if credit.audio %} data-audio="{{ credit.audio }}"{% endif %} aria-label="{{ credit.title }} — {{ credit.role }}">
+                        <img src="{{ credit.image }}" alt="{{ credit.title }}">
                         <div class="credit-card-overlay" aria-hidden="true">
-                            <span class="credit-title">Starboard</span>
-                            <span class="credit-role">Original Score</span>
+                            <span class="credit-title">{{ credit.title }}</span>
+                            <span class="credit-role">{{ credit.role }}</span>
                         </div>
                     </div>
-                    <div class="credit-card" data-audio="Audio/OneMoreTime.mp3" aria-label="One More Time — Original Score">
-                        <img src="Images/OneMoreTimeCredits.jpg" alt="One More Time">
-                        <div class="credit-card-overlay" aria-hidden="true">
-                            <span class="credit-title">One More Time</span>
-                            <span class="credit-role">Original Score</span>
-                        </div>
-                    </div>
-                    <div class="credit-card" data-audio="Audio/VelvetRose.mp3" aria-label="The Velvet Rose — Original Score">
-                        <img src="Images/VelvetCredits.jpg" alt="The Velvet Rose">
-                        <div class="credit-card-overlay" aria-hidden="true">
-                            <span class="credit-title">The Velvet Rose</span>
-                            <span class="credit-role">Original Score &mdash; Award Winner</span>
-                        </div>
-                    </div>
-                    <div class="credit-card" data-audio="Audio/wildman.mp3" aria-label="Wildman — Original Score">
-                        <img src="Images/WildmanCredits.jpg" alt="Wildman">
-                        <div class="credit-card-overlay" aria-hidden="true">
-                            <span class="credit-title">Wildman</span>
-                            <span class="credit-role">Original Score</span>
-                        </div>
-                    </div>
-                    <div class="credit-card" data-audio="Audio/Wheel.mp3" aria-label="Wheel of Fortune — Original Score">
-                        <img src="Images/WheelofFortune.jpg" alt="Wheel of Fortune">
-                        <div class="credit-card-overlay" aria-hidden="true">
-                            <span class="credit-title">Wheel of Fortune</span>
-                            <span class="credit-role">Original Score</span>
-                        </div>
-                    </div>
-                    <div class="credit-card" aria-label="Outbreak — Assistant to Composer">
-                        <img src="Images/Outbreak.jpg" alt="Outbreak">
-                        <div class="credit-card-overlay" aria-hidden="true">
-                            <span class="credit-title">Outbreak</span>
-                            <span class="credit-role">Assistant to Composer</span>
-                        </div>
-                    </div>
-                    <div class="credit-card" aria-label="The Farm — Original Score">
-                        <img src="Images/The Farm.jpg" alt="The Farm">
-                        <div class="credit-card-overlay" aria-hidden="true">
-                            <span class="credit-title">The Farm</span>
-                            <span class="credit-role">Original Score</span>
-                        </div>
-                    </div>
+                    {%- endfor %}
                 </div>
             </div>
         </section>
@@ -186,7 +149,7 @@
                             <span></span><span></span><span></span><span></span><span></span>
                         </div>
                     </div>
-                    <h3 class="now-playing-title" id="now-playing-title">The Hero</h3>
+                    <h3 class="now-playing-title" id="now-playing-title">{{ site.data.reel.groups[0].tracks[0].title }}</h3>
                     <div class="player-controls">
                         <button class="play-btn" id="play-pause-btn" aria-label="Play / Pause">
                             <i class="fas fa-play" aria-hidden="true"></i>
@@ -198,28 +161,12 @@
                 </div>
 
                 <div class="track-list reveal reveal-delay-2" role="list" aria-label="Track list">
-                    <div class="track-genre-header" role="presentation">Action</div>
-                    <div class="track-item" data-src="Audio/TMinus7.mp3"              data-title="T-Minus 7"              role="listitem" tabindex="0"><span class="track-item-title">T-Minus 7</span>              <span class="track-item-duration">1:02</span></div>
-                    <div class="track-item" data-src="Audio/DesertWar.mp3"            data-title="Desert War"             role="listitem" tabindex="0"><span class="track-item-title">Desert War</span>             <span class="track-item-duration">1:08</span></div>
-                    <div class="track-item" data-src="Audio/Onward.mp3"               data-title="Onward"                 role="listitem" tabindex="0"><span class="track-item-title">Onward</span>                 <span class="track-item-duration">1:34</span></div>
-                    <div class="track-item" data-src="Audio/The Hero.mp3"             data-title="The Hero"               role="listitem" tabindex="0"><span class="track-item-title">The Hero</span>               <span class="track-item-duration">2:28</span></div>
-
-                    <div class="track-genre-header" role="presentation">Fantasy &amp; Adventure</div>
-                    <div class="track-item" data-src="Audio/TheGreatAscent.mp3"       data-title="The Great Ascent"       role="listitem" tabindex="0"><span class="track-item-title">The Great Ascent</span>       <span class="track-item-duration">0:56</span></div>
-                    <div class="track-item" data-src="Audio/Foundation.mp3"           data-title="Foundation"             role="listitem" tabindex="0"><span class="track-item-title">Foundation</span>             <span class="track-item-duration">1:24</span></div>
-                    <div class="track-item" data-src="Audio/RegalBattle.mp3"          data-title="Regal Battle"           role="listitem" tabindex="0"><span class="track-item-title">Regal Battle</span>           <span class="track-item-duration">1:04</span></div>
-
-                    <div class="track-genre-header" role="presentation">Horror &amp; Suspense</div>
-                    <div class="track-item" data-src="Audio/WhatWasThat.mp3"          data-title="What Was That?"         role="listitem" tabindex="0"><span class="track-item-title">What Was That?</span>         <span class="track-item-duration">0:52</span></div>
-                    <div class="track-item" data-src="Audio/NostalgicNightmare.mp3"   data-title="Nostalgic Nightmare"    role="listitem" tabindex="0"><span class="track-item-title">Nostalgic Nightmare</span>    <span class="track-item-duration">1:08</span></div>
-                    <div class="track-item" data-src="Audio/BirthOfTheOffspring.mp3"  data-title="Birth of the Offspring" role="listitem" tabindex="0"><span class="track-item-title">Birth of the Offspring</span> <span class="track-item-duration">1:12</span></div>
-
-                    <div class="track-genre-header" role="presentation">Sci-Fi</div>
-                    <div class="track-item" data-src="Audio/Arrival.mp3"              data-title="They Have Arrived"      role="listitem" tabindex="0"><span class="track-item-title">They Have Arrived</span>      <span class="track-item-duration">1:31</span></div>
-                    <div class="track-item" data-src="Audio/Final Frontier.mp3"       data-title="Final Frontier"         role="listitem" tabindex="0"><span class="track-item-title">Final Frontier</span>         <span class="track-item-duration">2:35</span></div>
-                    <div class="track-item" data-src="Audio/Sea of Gold.mp3"          data-title="Sea of Gold"            role="listitem" tabindex="0"><span class="track-item-title">Sea of Gold</span>            <span class="track-item-duration">1:23</span></div>
-
-
+                    {%- for group in site.data.reel.groups %}
+                    <div class="track-genre-header" role="presentation">{{ group.genre }}</div>
+                    {%- for track in group.tracks %}
+                    <div class="track-item" data-src="{{ track.file }}" data-title="{{ track.title }}" role="listitem" tabindex="0"><span class="track-item-title">{{ track.title }}</span> <span class="track-item-duration">{{ track.duration }}</span></div>
+                    {%- endfor %}
+                    {%- endfor %}
                 </div>
             </div>
         </section>
@@ -239,14 +186,12 @@
         <section class="bio-section" id="bio" aria-label="Biography">
             <div class="bio-grid">
                 <div class="bio-image-wrap reveal-left">
-                    <img src="Images/BioPic.jpg" alt="AviShai Dayanim conducting">
+                    <img src="{{ site.data.bio.image }}" alt="{{ site.data.bio.image_alt }}">
                 </div>
                 <div class="bio-text-content reveal-right">
-                    <span class="section-eyebrow">The Composer</span>
-                    <h2>AviShai's Story</h2>
-                    <p>AviShai Dayanim is a composer, orchestrator, producer, and storyteller based in Los Angeles, California. A graduate of the Johns Hopkins University and the Peabody Institute, he holds a Bachelor of Music in Music for New Media and a Bachelor of Science in Computer Science — a dual-degree background that shapes his work at the intersection of composition and technology.</p>
-                    <p>From an early age, AviShai has been captivated by the power of music to tell stories and evoke deep emotions. He has composed scores for short films, theater productions, and video games — earning multiple awards at Film Festivals, most recently for his work on <em>The Velvet Rose.</em> His love for storytelling through music also drives his innovative sound design, crafting unique virtual instruments that bring new dimensions to his compositions.</p>
-                    <p>In May 2023, AviShai embarked on an exciting venture into virtual instrument creation through an internship at Impact Soundworks LLC. He has since had the honor of working alongside renowned composers including Michael Levine (<em>Megamind, The Simpsons Movie</em>), Mac Quayle (<em>Mr. Robot, American Horror Story</em>), and is a techinical score assistant for Henry Jackman (<em>Captain America, X-Men, Kingsman</em>).</p>
+                    <span class="section-eyebrow">{{ site.data.bio.eyebrow }}</span>
+                    <h2>{{ site.data.bio.heading }}</h2>
+                    {{ site.data.bio.body | markdownify }}
                 </div>
             </div>
         </section>
@@ -261,21 +206,13 @@
 
             <div class="articles-marquee-wrap">
                 <div class="articles-marquee">
-                    <a href="https://boldjourney.com/meet-avishai-dayanim/" target="_blank" rel="noopener noreferrer" class="article-card">
-                        <h3>Meet AviShai Dayanim</h3>
-                        <p>Published by <em>Bold Journey</em> &mdash; April 9, 2024</p>
+                    {%- for article in site.data.press.articles %}
+                    <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer" class="article-card">
+                        <h3>{{ article.title }}</h3>
+                        <p>Published {{ article.preposition | default: "by" }} <em>{{ article.publication }}</em> &mdash; {{ article.date }}</p>
                         <span class="card-arrow">Read Article</span>
                     </a>
-                    <a href="https://shoutoutla.com/meet-avishai-dayanim-composer-for-media/" target="_blank" rel="noopener noreferrer" class="article-card">
-                        <h3>Meet AviShai Dayanim | Composer for Media</h3>
-                        <p>Published in <em>ShoutOut LA</em> &mdash; January 29, 2024</p>
-                        <span class="card-arrow">Read Article</span>
-                    </a>
-                    <a href="https://canvasrebel.com/meet-avishai-dayanim/" target="_blank" rel="noopener noreferrer" class="article-card">
-                        <h3>Meet AviShai Dayanim</h3>
-                        <p>Published by <em>Canvas Rebel</em> &mdash; October 9, 2024</p>
-                        <span class="card-arrow">Read Article</span>
-                    </a>
+                    {%- endfor %}
                 </div>
             </div>
         </section>

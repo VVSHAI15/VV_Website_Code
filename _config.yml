@@ -1,0 +1,22 @@
+# GitHub Pages builds this site with Jekyll automatically — no CI needed.
+# Content lives in _data/*.yml and is edited through Sveltia CMS at /admin/.
+
+title: AviShai Dayanim
+tagline: Composer for Media
+url: https://www.avishaidayanimmusic.com
+description: >-
+  AviShai Dayanim is a composer, producer, orchestrator and storyteller.
+  With a deep passion for media scoring, AviShai blends traditional
+  orchestration with modern techniques to create evocative and hybrid
+  soundscapes that elevate the narrative.
+
+# Keep the built site lean
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .claude
+  - README.md
+
+# Kramdown is the GitHub Pages default; stated here so local builds match.
+markdown: kramdown
