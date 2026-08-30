@@ -88,19 +88,6 @@ ul   { list-style: none; }
     border-bottom-color: var(--c-border);
 }
 
-.nav-logo img {
-    height: 44px;
-    width: 44px;
-    object-fit: contain;
-    opacity: 0.82;
-    filter: invert(1);
-    transition: opacity var(--t-fast), filter var(--t-fast), transform var(--t-fast);
-}
-.nav-logo:hover img {
-    opacity: 1;
-    filter: invert(1) brightness(1.15);
-    transform: scale(1.05);
-}
 
 .nav-links {
     display: flex;
@@ -372,11 +359,6 @@ ul   { list-style: none; }
     margin: 0 auto;
 }
 
-.container {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 2.5rem;
-}
 
 /* ============================================
    Credits Section
@@ -441,8 +423,15 @@ ul   { list-style: none; }
     padding: 1.2rem 1rem;
     gap: 0.25rem;
 }
-.credit-card:hover .credit-card-overlay {
+.credit-card:hover .credit-card-overlay,
+.credit-card.is-playing .credit-card-overlay {
     opacity: 1;
+}
+
+/* Touch devices: tapping a card plays its cue, so give it the same lift */
+.credit-card.is-playing img {
+    transform: scale(1.06);
+    filter: grayscale(0%) brightness(1);
 }
 
 .credit-title {
@@ -580,83 +569,6 @@ ul   { list-style: none; }
     margin-bottom: 1.5rem;
 }
 
-.bio-read-more {
-    display: inline-block;
-    font-family: var(--font-display);
-    font-size: 0.62rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--c-gold);
-    border-bottom: 1px solid var(--c-gold-dark);
-    padding-bottom: 4px;
-    margin-top: 0.8rem;
-    transition: color var(--t-fast), border-color var(--t-fast), letter-spacing var(--t-normal);
-}
-.bio-read-more:hover {
-    color: var(--c-gold-light);
-    border-color: var(--c-gold);
-    letter-spacing: 0.45em;
-}
-
-/* ============================================
-   Stats Section
-   ============================================ */
-.stats-section {
-    padding: var(--sp-lg) 0;
-    background: var(--c-bg-3);
-    position: relative;
-}
-
-.stats-section::before,
-.stats-section::after {
-    content: '';
-    position: absolute;
-    left: 5%;
-    right: 5%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--c-gold-dark), transparent);
-}
-.stats-section::before { top: 0; }
-.stats-section::after  { bottom: 0; }
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    text-align: center;
-}
-
-.stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.stat-number {
-    font-family: var(--font-display);
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
-    font-weight: 400;
-    color: var(--c-gold);
-    line-height: 1;
-    letter-spacing: 0.04em;
-    text-shadow: 0 0 40px rgba(200, 169, 110, 0.3);
-}
-
-.stat-label {
-    font-family: var(--font-display);
-    font-size: 0.58rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--c-grey-light);
-}
-
-@media (max-width: 650px) {
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem 1rem;
-    }
-}
 
 /* ============================================
    Articles / News Section
@@ -1057,6 +969,81 @@ ul   { list-style: none; }
 }
 
 /* ============================================
+   Thank-You Page (contact form landing)
+   ============================================ */
+.thanks-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+    background: var(--c-bg);
+}
+
+.thanks-inner {
+    max-width: 560px;
+    text-align: center;
+}
+
+.thanks-logo img {
+    width: 260px;
+    max-width: 70%;
+    margin-bottom: 3.5rem;
+    opacity: 0.9;
+    transition: opacity var(--t-fast);
+}
+.thanks-logo:hover img { opacity: 1; }
+
+.thanks-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--c-white);
+    margin-bottom: 1.6rem;
+}
+
+.thanks-text {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.95;
+    color: var(--c-grey-light);
+    margin: 2.2rem 0 3rem;
+}
+
+.thanks-back {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.62rem;
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.65);
+    border: 1px solid rgba(200, 169, 110, 0.35);
+    padding: 1.1rem 3.2rem;
+    transition: border-color 0.5s ease, background 0.5s ease, color 0.5s ease, transform var(--t-fast);
+}
+.thanks-back:hover {
+    border-color: var(--c-gold);
+    background: rgba(200, 169, 110, 0.08);
+    color: var(--c-gold-light);
+    transform: translateY(-2px);
+}
+
+.thanks-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+}
+.thanks-social a {
+    color: var(--c-grey);
+    font-size: 0.95rem;
+    transition: color var(--t-fast);
+}
+.thanks-social a:hover { color: var(--c-gold); }
+
+
+/* ============================================
    Site Footer
    ============================================ */
 .site-footer {
@@ -1111,8 +1098,7 @@ ul   { list-style: none; }
 }
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.22s; }
-.reveal-delay-3 { transition-delay: 0.34s; }
-.reveal-delay-4 { transition-delay: 0.46s; }
+
 
 .reveal-left {
     opacity: 0;
@@ -1148,8 +1134,9 @@ ul   { list-style: none; }
     50%       { opacity: 1;    transform: scaleY(1.1); }
 }
 
+
 /* ============================================
-   Overlay / Entry Page
+   Intro Overlay (in-page)
    ============================================ */
 .overlay-page {
     position: fixed;
@@ -1161,6 +1148,18 @@ ul   { list-style: none; }
     justify-content: center;
     z-index: 9999;
     transition: opacity 1.2s ease;
+}
+
+/* Hidden for returning visitors (set by the inline head script) and
+   for anyone without JavaScript, who would otherwise be stuck behind it. */
+html.intro-seen .overlay-page,
+html.no-js .overlay-page {
+    display: none;
+}
+
+.overlay-page.is-leaving {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .overlay-lb {
@@ -1220,76 +1219,6 @@ ul   { list-style: none; }
     transform: translateY(-2px);
 }
 
-/* ============================================
-   Inner Page Header (non-hero pages)
-   ============================================ */
-.page-hero {
-    padding-top: var(--nav-h);
-    background: var(--c-bg);
-    position: relative;
-    overflow: hidden;
-}
-
-.page-hero-inner {
-    padding: var(--sp-lg) 2.5rem var(--sp-md);
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    border-bottom: 1px solid var(--c-border-soft);
-}
-
-.page-hero-eyebrow {
-    font-family: var(--font-display);
-    font-size: 0.6rem;
-    letter-spacing: 0.55em;
-    text-transform: uppercase;
-    color: var(--c-gold);
-    display: block;
-    margin-bottom: 1rem;
-}
-
-.page-hero-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 400;
-    letter-spacing: 0.15em;
-    color: var(--c-white);
-    text-transform: uppercase;
-}
-
-/* ============================================
-   Bio Full Page
-   ============================================ */
-.bio-full-section {
-    padding: var(--sp-xl) 0;
-    background: var(--c-bg);
-}
-
-.bio-full-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.7fr;
-    gap: 5rem;
-    align-items: start;
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 2.5rem;
-}
-
-/* ============================================
-   Listen / Full Audio Player Page
-   ============================================ */
-.listen-section {
-    padding: var(--sp-xl) 0;
-    background: var(--c-bg);
-}
-
-/* ============================================
-   Contact Page
-   ============================================ */
-.contact-page-section {
-    padding: var(--sp-xl) 0;
-    background: var(--c-bg);
-}
 
 /* ============================================
    Scroll Progress Bar
@@ -1408,12 +1337,11 @@ textarea:focus-visible {
     .quote-text { padding: 0 1.5rem; }
 
     /* Overlay */
-    .overlay-lb-top,
-    .overlay-lb-bottom { height: 48px; }
-    .overlay-logo { width: 70%; }
+    
+    
 
     /* Layout containers */
-    .container      { padding: 0 1.5rem; }
+    
     .bio-grid,
     .bio-full-grid  { padding: 0 1.5rem; gap: 2rem; }
     .reel-inner     { padding: 0 1.5rem; }

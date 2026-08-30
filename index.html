@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,12 +32,31 @@
     <script src="scripts.js" defer></script>
 
     <script>
-        if (!sessionStorage.getItem('visited')) {
-            window.location.href = 'overlay.html';
-        }
+        /* Runs before paint: drop the no-js flag, and skip the intro for
+           anyone who has already dismissed it this session. */
+        (function () {
+            var d = document.documentElement;
+            d.className = d.className.replace(/\bno-js\b/, '');
+            try {
+                if (sessionStorage.getItem('visited')) d.className += ' intro-seen';
+            } catch (e) { /* private mode — just show the intro */ }
+        })();
     </script>
 </head>
 <body>
+
+    <!-- ==================== INTRO OVERLAY ====================
+         Kept as an in-page layer rather than a separate page: the Enter
+         click is what unlocks audio playback in the browser, which the
+         credit-card previews depend on. -->
+    <div class="overlay-page" id="overlay-page">
+        <div class="overlay-lb overlay-lb-top"></div>
+        <div class="overlay-lb overlay-lb-bottom"></div>
+
+        <img src="Images/Main_Logo-01.png" alt="AviShai Dayanim" class="overlay-logo">
+        <p class="overlay-tagline">I want to tell a story</p>
+        <button class="overlay-enter" id="overlay-enter-btn">Enter</button>
+    </div>
 
     <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
@@ -130,6 +149,20 @@
                         <img src="Images/WheelofFortune.jpg" alt="Wheel of Fortune">
                         <div class="credit-card-overlay" aria-hidden="true">
                             <span class="credit-title">Wheel of Fortune</span>
+                            <span class="credit-role">Original Score</span>
+                        </div>
+                    </div>
+                    <div class="credit-card" aria-label="Outbreak — Assistant to Composer">
+                        <img src="Images/Outbreak.jpg" alt="Outbreak">
+                        <div class="credit-card-overlay" aria-hidden="true">
+                            <span class="credit-title">Outbreak</span>
+                            <span class="credit-role">Assistant to Composer</span>
+                        </div>
+                    </div>
+                    <div class="credit-card" aria-label="The Farm — Original Score">
+                        <img src="Images/The Farm.jpg" alt="The Farm">
+                        <div class="credit-card-overlay" aria-hidden="true">
+                            <span class="credit-title">The Farm</span>
                             <span class="credit-role">Original Score</span>
                         </div>
                     </div>
@@ -259,7 +292,7 @@
 
                 <form action="https://api.web3forms.com/submit" method="POST" class="contact-form reveal reveal-delay-2">
                     <input type="hidden" name="access_key" value="949dea64-3b9a-4bc0-8b66-20b0d5e9dbd3">
-                    <input type="hidden" name="redirect" value="https://www.avishaidayanimmusic.com/contact.html">
+                    <input type="hidden" name="redirect" value="https://www.avishaidayanimmusic.com/thankyou.html">
 
                     <div class="form-field">
                         <label for="name">Name</label>

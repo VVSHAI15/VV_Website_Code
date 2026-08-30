@@ -3,18 +3,22 @@
  * Handles: nav scroll, scroll-reveal, marquees, WaveSurfer audio, credit hover audio
  */
 
+/* Assigned by initCreditAudioHover(); called on the first real user gesture
+   so Safari/iOS will let the credit previews play later on hover. */
+let primeCreditAudio = () => {};
+
 document.addEventListener('DOMContentLoaded', () => {
+    initCreditAudioHover();
+    initIntroOverlay();
     initNavScroll();
     initNavActiveSection();
     initMobileNav();
     initScrollReveal();
     initScrollProgress();
     initHeroParallax();
-    initStatCounters();
     initCreditsMarquee();
     initArticlesMarquee();
     initWaveSurferPlayer();
-    initCreditAudioHover();
 });
 
 /* ============================================
@@ -354,17 +358,20 @@ function initWaveSurferPlayer() {
 }
 
 /* ============================================
-   Credit Card Hover Audio
-   Uses event delegation on the strip so it works
-   for original cards AND all clones automatically.
+   Credit Card Audio
+   Hover previews on pointer devices, tap-to-play on
+   touch devices. Delegated on the strip so it covers
+   the marquee clones automatically.
    ============================================ */
 function initCreditAudioHover() {
     const strip = document.querySelector('.credits-strip');
     if (!strip) return;
 
     // Shared audio pool keyed by src — one Audio object per track
-    const pool      = {};
+    const pool       = {};
     const fadeTimers = new WeakMap();
+    const canHover   = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    let   current    = null;   // card whose cue is playing (touch mode)
 
     const getAudio = (src) => {
         if (!pool[src]) {
@@ -389,35 +396,92 @@ function initCreditAudioHover() {
         fadeTimers.set(card, timer);
     };
 
-    // mouseover / mouseout bubble — perfect for delegation
-    strip.addEventListener('mouseover', (e) => {
-        const card = e.target.closest('.credit-card[data-audio]');
-        if (!card) return;
-        // Ignore if we're just moving between child elements
-        if (card.contains(e.relatedTarget)) return;
-
-        const src   = card.getAttribute('data-audio');
-        const audio = getAudio(src);
-
-        // Cancel any active fade on this card
+    const play = (card) => {
+        const audio = getAudio(card.getAttribute('data-audio'));
         const existing = fadeTimers.get(card);
         if (existing) { clearInterval(existing); fadeTimers.delete(card); }
-
         audio.volume      = 1;
         audio.currentTime = 0;
-        audio.play().catch(() => {});
-    });
+        audio.play().catch(() => {});   // blocked until the visitor interacts
+        return audio;
+    };
 
-    strip.addEventListener('mouseout', (e) => {
-        const card = e.target.closest('.credit-card[data-audio]');
-        if (!card) return;
-        // Ignore if still inside the card
-        if (card.contains(e.relatedTarget)) return;
+    const stop = (card) => {
+        startFade(card, getAudio(card.getAttribute('data-audio')));
+    };
 
-        const src   = card.getAttribute('data-audio');
-        const audio = getAudio(src);
-        startFade(card, audio);
-    });
+    /* Unlock: browsers only allow playback once the visitor has interacted,
+       and Safari wants each Audio element's first play() to happen inside
+       that gesture. Play-then-pause every cue at zero volume to satisfy it. */
+    primeCreditAudio = () => {
+        document.querySelectorAll('.credit-card[data-audio]').forEach(card => {
+            const audio = getAudio(card.getAttribute('data-audio'));
+            const restore = () => { audio.pause(); audio.currentTime = 0; audio.volume = 1; };
+            audio.volume = 0;
+            const p = audio.play();
+            if (p && p.then) p.then(restore).catch(restore);
+            else restore();
+        });
+    };
+
+    if (canHover) {
+        strip.addEventListener('mouseover', (e) => {
+            const card = e.target.closest('.credit-card[data-audio]');
+            if (!card || card.contains(e.relatedTarget)) return;
+            play(card);
+        });
+
+        strip.addEventListener('mouseout', (e) => {
+            const card = e.target.closest('.credit-card[data-audio]');
+            if (!card || card.contains(e.relatedTarget)) return;
+            stop(card);
+        });
+    } else {
+        // Touch: tap to start, tap again (or tap another card) to stop.
+        strip.addEventListener('click', (e) => {
+            const card = e.target.closest('.credit-card[data-audio]');
+            if (!card) return;
+            if (current && current !== card) stop(current);
+            if (current === card) {
+                stop(card);
+                card.classList.remove('is-playing');
+                current = null;
+            } else {
+                if (current) current.classList.remove('is-playing');
+                play(card);
+                card.classList.add('is-playing');
+                current = card;
+            }
+        });
+    }
+}
+
+/* ============================================
+   Intro Overlay
+   Lives on the homepage rather than its own page.
+   The Enter click is also what unlocks audio.
+   ============================================ */
+function initIntroOverlay() {
+    const overlay = document.getElementById('overlay-page');
+
+    // Returning visitors this session never see it — prime on their first
+    // gesture instead, so hover previews still work after a reload.
+    const primeOnce = () => primeCreditAudio();
+    document.addEventListener('pointerdown', primeOnce, { once: true });
+    document.addEventListener('keydown',     primeOnce, { once: true });
+
+    if (!overlay) return;
+    const btn = document.getElementById('overlay-enter-btn');
+    if (!btn) return;
+
+    const dismiss = () => {
+        primeCreditAudio();
+        try { sessionStorage.setItem('visited', 'true'); } catch (e) {}
+        overlay.classList.add('is-leaving');
+        setTimeout(() => overlay.remove(), 1300);
+    };
+
+    btn.addEventListener('click', dismiss);
 }
 
 /* ============================================
@@ -433,62 +497,3 @@ function initScrollProgress() {
         bar.style.width  = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
     }, { passive: true });
 }
-
-/* ============================================
-   Stat Counter — counts up on scroll-enter
-   ============================================ */
-function initStatCounters() {
-    const statEls = document.querySelectorAll('.stat-number');
-    if (!statEls.length) return;
-
-    const parse = (el) => {
-        const raw    = el.textContent.trim();
-        const num    = parseFloat(raw.replace(/[^0-9.]/g, '')) || 0;
-        const suffix = raw.replace(/[0-9.]/g, '').trim();
-        // store original for re-use
-        el.dataset.target  = num;
-        el.dataset.suffix  = suffix;
-        return { num, suffix };
-    };
-
-    const animate = (el, target, suffix) => {
-        const from     = 0;
-        const duration = 1400;
-        const start    = performance.now();
-        const step     = (now) => {
-            const p     = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - p, 3);          // cubic ease-out
-            el.textContent = Math.round(from + eased * (target - from)) + suffix;
-            if (p < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const { num, suffix } = parse(el);
-                animate(el, num, suffix);
-                observer.unobserve(el); // fire once
-            }
-        });
-    }, { threshold: 0.5 });
-
-    statEls.forEach(el => observer.observe(el));
-}
-
-/* ============================================
-   Overlay Fade-out on Enter
-   ============================================ */
-(function initOverlay() {
-    const btn     = document.getElementById('overlay-enter-btn');
-    const overlay = document.getElementById('overlay-page');
-    if (!btn || !overlay) return;
-
-    btn.addEventListener('click', () => {
-        overlay.style.opacity = '0';
-        sessionStorage.setItem('visited', 'true');
-        setTimeout(() => { window.location.href = 'index.html'; }, 1200);
-    });
-})();
