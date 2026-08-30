@@ -1,16 +1,23 @@
 # Sveltia CMS — edits the YAML in _data/, which Jekyll renders into the page.
 #
-# Local editing (no GitHub login, nothing pushed):
-#   bundle exec jekyll serve
-#   open http://localhost:4000/admin/  and choose "Work with Local Repository"
+# Two ways in:
 #
-# Editing live at avishaidayanimmusic.com/admin/ needs a GitHub OAuth
-# helper — see README. Until then, local mode is the way in.
+#   Live  — https://www.avishaidayanimmusic.com/admin/ and "Sign In with
+#           GitHub". Saving commits straight to main; GitHub Pages rebuilds
+#           within a minute or two. Works from any device.
+#
+#   Local — serve the repo (python3 -m http.server 4000), open
+#           http://localhost:4000/admin/ in Chrome, choose "Work with Local
+#           Repository". Edits write to disk only; you commit and push.
 
 backend:
   name: github
   repo: VVSHAI15/VV_Website_Code
   branch: main
+  # OAuth helper (Cloudflare Worker) that lets a static page complete a
+  # GitHub login. Its GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET live in the
+  # Worker's settings, never in this repo.
+  base_url: https://sveltia-cms-auth.dayanim-music.workers.dev
 
 media_folder: "Images"
 public_folder: "/Images"

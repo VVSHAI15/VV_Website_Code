@@ -49,11 +49,24 @@ That writes `preview.html` (gitignored) beside the real images and audio,
 so the intro overlay, the player and the credit-card previews all behave
 as they will live. Open it directly in a browser.
 
-**Live, from anywhere:** editing at `avishaidayanimmusic.com/admin/`
-needs a GitHub OAuth helper, because GitHub's API won't accept a login
-from a static page on its own. The usual setup is the
-`sveltia-cms-auth` worker on a free Cloudflare account, plus a GitHub
-OAuth app whose callback points at it. Not set up yet.
+**Live, from anywhere:** go to
+<https://www.avishaidayanimmusic.com/admin/> and click **Sign In with
+GitHub**. Saving commits straight to `main`, and GitHub Pages rebuilds
+within a minute or two — no terminal, no local server, works on a phone.
+
+That login runs through a small Cloudflare Worker, because GitHub's API
+won't accept a login from a static page on its own:
+
+| Piece | Where |
+| --- | --- |
+| Worker | `sveltia-cms-auth.dayanim-music.workers.dev` (Cloudflare account, deployed from `VVSHAI15/sveltia-cms-auth`) |
+| OAuth app | GitHub → Settings → Developer settings → *AviShai Dayanim Music CMS* |
+| Client ID / secret | Worker's runtime variables — `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`. Never in this repo. |
+| Who may use it | Worker's `ALLOWED_DOMAINS` — the live domain plus `localhost` |
+
+If login ever breaks, check those four things in that order. Rotating the
+secret means generating a new one on the OAuth app and updating the
+Worker variable; nothing in this repo changes.
 
 ## How a change reaches the site
 
