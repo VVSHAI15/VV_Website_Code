@@ -370,7 +370,6 @@ function initCreditAudioHover() {
     // Shared audio pool keyed by src — one Audio object per track
     const pool       = {};
     const fadeTimers = new WeakMap();
-    const canHover   = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     let   current    = null;   // card whose cue is playing (touch mode)
 
     const getAudio = (src) => {
@@ -424,36 +423,39 @@ function initCreditAudioHover() {
         });
     };
 
-    if (canHover) {
-        strip.addEventListener('mouseover', (e) => {
-            const card = e.target.closest('.credit-card[data-audio]');
-            if (!card || card.contains(e.relatedTarget)) return;
-            play(card);
-        });
+    // Hover previews use pointer events so we can inspect pointerType per
+    // event: only a real mouse triggers hover-play. Touch/pen bail out here
+    // and fall through to the tap-to-play click handler below. This avoids
+    // the load-time media-query snapshot that mis-fires on some phones.
+    strip.addEventListener('pointerenter', (e) => {
+        if (e.pointerType !== 'mouse') return;
+        const card = e.target.closest('.credit-card[data-audio]');
+        if (card) play(card);
+    }, true);
 
-        strip.addEventListener('mouseout', (e) => {
-            const card = e.target.closest('.credit-card[data-audio]');
-            if (!card || card.contains(e.relatedTarget)) return;
+    strip.addEventListener('pointerleave', (e) => {
+        if (e.pointerType !== 'mouse') return;
+        const card = e.target.closest('.credit-card[data-audio]');
+        if (card) stop(card);
+    }, true);
+
+    // Touch: tap to start, tap again (or tap another card) to stop.
+    strip.addEventListener('click', (e) => {
+        if (window.matchMedia('(pointer: fine)').matches) return; // mouse clicks handled by hover above
+        const card = e.target.closest('.credit-card[data-audio]');
+        if (!card) return;
+        if (current && current !== card) stop(current);
+        if (current === card) {
             stop(card);
-        });
-    } else {
-        // Touch: tap to start, tap again (or tap another card) to stop.
-        strip.addEventListener('click', (e) => {
-            const card = e.target.closest('.credit-card[data-audio]');
-            if (!card) return;
-            if (current && current !== card) stop(current);
-            if (current === card) {
-                stop(card);
-                card.classList.remove('is-playing');
-                current = null;
-            } else {
-                if (current) current.classList.remove('is-playing');
-                play(card);
-                card.classList.add('is-playing');
-                current = card;
-            }
-        });
-    }
+            card.classList.remove('is-playing');
+            current = null;
+        } else {
+            if (current) current.classList.remove('is-playing');
+            play(card);
+            card.classList.add('is-playing');
+            current = card;
+        }
+    });
 }
 
 /* ============================================
