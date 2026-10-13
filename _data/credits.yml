@@ -27,3 +27,7 @@ cards:
     role: Original Score
     image: Images/The Farm.jpg
     audio: /Audio/TheFarmTheme.mp3
+  - title: 8th Day
+    role: Original Score
+    image: /Images/8th day-poster.jpg
+    audio: /Audio/8thDay_ThemeConcept_v1.m4a
